@@ -941,25 +941,25 @@
         Two constraints are already settled and they close off the cheap answers. The protocol needs more than three days unattended, and the implant volume caps the cell at roughly 50–100&nbsp;mAh — a LiPo in that class, not a bench battery. v8.1 draws ~3.4&nbsp;mA while stimulating, which empties a 50&nbsp;mAh LiPo in about 9.5&nbsp;hours, and firmware optimization on v8.1 is exhausted: its ~1.5&nbsp;mA sleep floor is structural, because the MCU sits downstream of a boost converter that can never be switched off. Neither "run what we have on a bigger battery" nor "fix the firmware" is available.
       </p>
       <p>
-        What stays open is which architecture replaces it. Five questions decide that, ordered so you can stop earliest. Two exits still end in replicating a device that already exists rather than building one. Only one path runs all the way through, and that path is the proposal below.
+        What stays open is which architecture replaces it. Five questions decide that, ordered so you can stop earliest. Two exits end in replicating a device that already exists rather than building one, and one forks the budget rather than closing it. Only one path runs all the way through, and that path is the proposal below.
       </p>
       <ol class="gates">
         <li class="gate">
           <p class="gate-q">What compliance do the electrodes actually demand?</p>
           <p class="gate-how">Sweep battery current against load impedance at 1, 5, 10, 20, 30 and 50 kΩ, at the working amplitude. This is the single most informative measurement on the list, and a LiPo helps: it sits at 3.0–4.2 V, more headroom than a 2.8 V hearing-aid cell would have given.</p>
-          <p class="gate-out out-stop"><b>Exit</b><span>Routinely above what the cell provides. A boost has to enter the stimulation path, and gate 2 explains why it then cannot be gated per pulse. Budget moves to the 30–150 µA class, or to Pinnell's ~30 hours if the rail is simply left up.</span></p>
+          <p class="gate-out out-stop"><b>Exit</b><span>Routinely above what the cell provides. A boost has to enter the stimulation path, and gate 2 asks what gating it would cost. Budget moves toward the 30–150 µA class, or to Pinnell's ~30 hours if the rail is simply left up.</span></p>
           <p class="gate-out out-go"><b>Continue</b><span>~3 V covers the working range, as STELLA found. Battery-direct is viable.</span></p>
         </li>
         <li class="gate">
           <p class="gate-q">Can the analog chain settle inside the inter-pulse interval?</p>
           <p class="gate-how">Datasheet enable times, to be confirmed on the bench. At 130 Hz the interval is 7.7 ms. The LT6020-1 enables in 100 µs typical and 120 µs over temperature; the AD5683 exits power-down in 6 µs so long as its internal reference stays off, since waking that reference costs 600 µs.</p>
-          <p class="gate-out out-stop"><b>Exit</b><span>Not with a boost in the path. The MAX17220 re-reads its output-select resistor on every startup — typically 600 µs at up to 200 µA — which cannot be paid 130 times a second. The rail then stays up for the whole train and most of the duty-cycling saving disappears.</span></p>
+          <p class="gate-out out-stop"><b>Measure</b><span>With a boost in the path, this needs bench data rather than assertion. Timing is not the obstacle: the MAX17220 re-reads its output-select resistor on every startup, 600 µs typical and 1.32 ms worst case, and even the worst case fits inside 7.7 ms. Energy is the open question — the startup term alone is up to 200 µA for 600 µs at 130 Hz, about 16 µA averaged, before output-cap charging and conversion losses. Per-pulse gating may still beat holding the rail up for whole trains, so this branch forks the budget rather than closing it.</span></p>
           <p class="gate-out out-go"><b>Continue</b><span>Battery-direct. One 100 µs amplifier enable covering both hemispheres' pulses is a 4.4% duty cycle, so the op amp averages ~10 µA rather than 190 µA.</span></p>
         </li>
         <li class="gate">
           <p class="gate-q">Must parameters change while stimulation is running?</p>
           <p class="gate-how">Set by the experimental design.</p>
-          <p class="gate-out out-stop"><b>Exit</b><span>Yes, continuously. The radio stays live and you are in the milliamp class by definition. That is acute mode, and it should not be sold as chronic.</span></p>
+          <p class="gate-out out-stop"><b>Exit</b><span>Yes, continuously. A live link is not milliamp-class by definition — at long connection intervals with small payloads BLE averages tens of µA — so the real variable is the latency the protocol demands. A slow supervisory link is compatible with chronic operation; interactive control at low latency is not, and that is acute mode rather than something to sell as chronic.</span></p>
           <p class="gate-out out-go"><b>Continue</b><span>Configure, then run untouched for days.</span></p>
         </li>
         <li class="gate">
@@ -969,14 +969,14 @@
           <p class="gate-out out-go"><b>Continue</b><span>Bilateral, with amplitude programmable over BLE without recovering the animal.</span></p>
         </li>
         <li class="gate">
-          <p class="gate-q">Is symmetric arbitrary biphasic required at every pulse?</p>
-          <p class="gate-how">Set by the science, and worth challenging — the cost is the always-on precision analog, not the biphasic waveform itself.</p>
-          <p class="gate-out out-stop"><b>Exit</b><span>Yes, always. That returns the continuously biased analog stack and the milliamp budget with it.</span></p>
-          <p class="gate-out out-go"><b>Continue</b><span>Asymmetric active or passive recharge is acceptable. Paulat runs asymmetric biphasic at 21 µA; STELLA is charge-balanced at 7.6 µA.</span></p>
+          <p class="gate-q">Is arbitrary waveform shaping required at every pulse?</p>
+          <p class="gate-how">Set by the science, and worth challenging. Symmetry itself is not the expensive part — matched opposite-polarity phases can be produced by a duty-cycled source and polarity switching. What costs milliamps is holding precision analog continuously biased so that any shape can be produced on demand.</p>
+          <p class="gate-out out-stop"><b>Exit</b><span>Yes — the shape must be arbitrary and settable pulse to pulse. That returns the continuously biased analog stack and the milliamp budget with it.</span></p>
+          <p class="gate-out out-go"><b>Continue</b><span>A shape fixed per configuration is acceptable, whether symmetric, asymmetric active, or passive recharge. Paulat runs asymmetric biphasic at 21 µA; STELLA is charge-balanced at 7.6 µA.</span></p>
         </li>
       </ol>
       <p>
-        Clearing all five is what justifies v9: compliance the cell can supply directly, an analog chain that settles inside the interval, configure-then-run, bilateral and reprogrammable, and a recharge scheme that does not need continuous precision analog. That combination is not available off the shelf. Anything less has a cheaper answer above.
+        Clearing all five is what justifies v9: compliance the cell can supply directly, an analog chain that settles inside the interval, configure-then-run, bilateral and reprogrammable, and a waveform requirement that does not need continuously biased precision analog. That combination is not available off the shelf. Anything less has a cheaper answer above.
       </p>
     </div>
 
@@ -994,7 +994,7 @@
         Creed v9 should not try to maximize chronic runtime and real-time flexibility in one always-on architecture. The proposed chronic mode is the Paulat/STELLA class: battery-direct ~3&nbsp;V, pulses scheduled by a low-frequency timer and shaped in hardware, a shared current source for bilateral delivery, asymmetric or passive recharge, BLE only to configure. Target 10–30&nbsp;µA. Biphasic stimulation itself is not the milliamp problem — Paulat already generates an asymmetric biphasic waveform at 21&nbsp;µA, and STELLA is charge-balanced at 7.6&nbsp;µA. The expensive combination is high compliance plus continuously biased precision analog plus an awake MCU.
       </p>
       <p>
-        Everything below assumes the gates cleared. The one that can still redirect the design is the impedance sweep: if the electrodes need more headroom than the cell provides, a boost enters the stimulation path, and because it cannot be restarted per pulse it has to stay up for whole trains — moving the target to the 30–150&nbsp;µA class. The rest of the proposal — sleeping core, shared source, per-pulse analog, radio only for configuration — survives that change unaltered. Acute mode keeps the richer analog and a live BLE link; it simply stops being the default.
+        Everything below assumes the gates cleared. The one that can still redirect the design is the impedance sweep: if the electrodes need more headroom than the cell provides, a boost enters the stimulation path and the target moves toward the 30–150&nbsp;µA class. How far depends on whether the converter can be gated per pulse or has to stay up for whole trains, which is a measurement rather than a foregone conclusion. The rest of the proposal — sleeping core, shared source, per-pulse analog, radio only for configuration — survives that change unaltered. Acute mode keeps the richer analog and a live BLE link; it simply stops being the default.
       </p>
 
       <h3>Architecture direction</h3>
@@ -1023,7 +1023,7 @@
           </tr>
           <tr>
             <td>Compliance</td>
-            <td>Battery-direct from the cell; a boost only if Z demands it, and then up for whole trains</td>
+            <td>Battery-direct from the cell; a boost only if Z demands it, gated per pulse or per train as the bench dictates</td>
             <td>High rails allowed; never left on in chronic</td>
           </tr>
           <tr>
@@ -1083,7 +1083,7 @@
           <tr>
             <td>Board supply</td>
             <td>MAX17220 boost always on, feeding MCU and analog</td>
-            <td class="drop">Deleted from the always-on path. Stimulation runs battery-direct; a boost returns only if gate 1 demands it, and then stays up for a whole train</td>
+            <td class="drop">Deleted from the always-on path. Stimulation runs battery-direct; a boost returns only if gate 1 demands it, gated per pulse or per train depending on what the bench shows</td>
             <td class="keep">0</td>
           </tr>
           <tr>
@@ -1258,13 +1258,13 @@
           <tr>
             <td>MAX17220 startup</td>
             <td class="keep">600 µs typ, 1320 µs max, up to 200 µA</td>
-            <td colspan="2">It re-reads its output-select resistor on every startup. <strong>This rules out per-pulse boost gating</strong>, which is why battery-direct is the default rather than a preference.</td>
+            <td colspan="2">It re-reads its output-select resistor on every startup, so the delay is paid again every time. Even the worst case fits inside 7.7 ms — <strong>the cost, not the timing, is what argues against per-pulse boost gating</strong>: roughly 16 µA averaged from the startup term alone, before output-cap charging and conversion losses.</td>
           </tr>
         </tbody>
       </table>
       </div>
       <p>
-        The sequence that falls out: the RTC fires, PPI starts the 1 MHz timer and asserts the amplifier enable, the DAC wakes and is loaded, the timer clocks the phases and recharge for one hemisphere, the electrode switch re-routes and the second hemisphere follows, then everything is shut down again — about 340&nbsp;µs of activity in a 7,700&nbsp;µs interval, with the core asleep throughout. The two assumptions most likely to break it are the boost startup, which is why no boost belongs in the pulse path, and the real settling time of the current source into a capacitive electrode, which is a bench measurement rather than a datasheet number.
+        The sequence that falls out: the RTC fires, PPI starts the 1 MHz timer and asserts the amplifier enable, the DAC wakes and is loaded, the timer clocks the phases and recharge for one hemisphere, the electrode switch re-routes and the second hemisphere follows, then everything is shut down again — about 340&nbsp;µs of activity in a 7,700&nbsp;µs interval, with the core asleep throughout. The two assumptions most likely to break it are the cost of boost startup, which is why battery-direct is the default, and the real settling time of the current source into a capacitive electrode. Both are bench measurements rather than datasheet numbers.
       </p>
 
       <h3>Why the shared source is safe</h3>
@@ -1446,7 +1446,8 @@
   const RAILS = {
     direct: { v: null, eta: 1, overhead: 0, name: "battery-direct" },
     mid: { v: 3.5, eta: 0.75, overhead: 80, name: "3–4 V" },
-    dynamic: { v: 8, eta: 0.75, overhead: 0, name: "pulse-gated boost" },
+    // MAX17220 re-runs RSEL detection on every start: ~200 µA for 600 µs, paid at FREQ_HZ.
+    dynamic: { v: 8, eta: 0.75, overhead: 16, name: "pulse-gated boost" },
     split5: { v: 5, eta: 0.75, overhead: 800, name: "always-on ±5 V" },
     high12: { v: 12, eta: 0.75, overhead: 900, name: "12 V" }
   };
@@ -1631,7 +1632,7 @@
     },
     ble: {
       title: "BLE is not in the chronic budget",
-      html: "<p>Config-then-off is assumed. Connected BLE on v8.1 is ~0.3–0.5 mA on top of an already-awake radio stack — an acute-mode cost.</p><p>Shen et al. show real-time BLE is practical if you accept a 7.5 g pack. That is not a mouse-scale solution. A low-power BLE MCU used only to configure does not change this conversation.</p>"
+      html: "<p>Config-then-off is assumed. Connected BLE on v8.1 is ~0.3–0.5 mA on top of an already-awake radio stack — an acute-mode cost.</p><p>That figure describes v8.1's implementation, not a law. A modern stack at a long connection interval with small payloads averages tens of µA, so a slow supervisory link is compatible with chronic operation. What drives the milliamp numbers is low latency: the shorter the connection interval, the more often the radio wakes.</p><p>Shen et al. show real-time BLE is practical if you accept a 7.5 g pack. That is not a mouse-scale solution.</p>"
     },
     z: {
       title: "V = IZ",
@@ -1639,7 +1640,7 @@
     },
     rail: {
       title: "Design around the load",
-      html: "<p>STELLA kept compliance at ~2.2–2.8 V because that matched measured loads. Creed built a laboratory ±5 V source. High compliance plus continuously biased precision analog is the expensive combination, not biphasic stimulation.</p><p>Pulse-gated boost is the attractive middle: the high rail exists only during the pulse, or when impedance actually demands it. 12 V (Pinnell) shows what waveform flexibility plus high compliance costs even without BLE.</p>"
+      html: "<p>STELLA kept compliance at ~2.2–2.8 V because that matched measured loads. Creed built a laboratory ±5 V source. High compliance plus continuously biased precision analog is the expensive combination, not biphasic stimulation.</p><p>Pulse-gated boost is the attractive middle: the high rail exists only during the pulse, or when impedance actually demands it. It is not free — a MAX17220-class converter re-runs its output-select detection on every start, ~200 µA for 600 µs, so restarting it at 130 Hz costs ~16 µA before output-cap charging and conversion losses. Timing is not the barrier; even the 1.32 ms worst case fits inside 7.7 ms. Whether that beats holding the rail up for a whole train is a bench measurement.</p><p>12 V (Pinnell) shows what waveform flexibility plus high compliance costs even without BLE.</p>"
     },
     wave: {
       title: "Biphasic is not the mA problem",

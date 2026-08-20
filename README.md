@@ -1,6 +1,8 @@
 # Creed DBS architecture explorer
 
-A static page that prices mouse DBS architecture choices in battery current and chronic lifetime. Open [`docs/index.html`](docs/index.html) in a browser, or deploy it with GitHub Pages.
+A static page that prices mouse DBS architecture choices in battery current and chronic lifetime.
+
+**[Open the explorer](https://neurotech-hub.github.io/CreedDBSReview/)**
 
 The long-form source is [`docs/architecture_review.md`](docs/architecture_review.md).
 

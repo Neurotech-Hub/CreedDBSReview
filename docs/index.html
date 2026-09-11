@@ -952,7 +952,7 @@
         </li>
         <li class="gate">
           <p class="gate-q">Can the analog chain settle inside the inter-pulse interval?</p>
-          <p class="gate-how">Datasheet enable times, to be confirmed on the bench. At 130 Hz the interval is 7.7 ms. The LT6020-1 enables in 100 µs typical and 120 µs over temperature; the AD5683 exits power-down in 6 µs so long as its internal reference stays off, since waking that reference costs 600 µs.</p>
+          <p class="gate-how">Datasheet enable times, to be confirmed on the bench. At 130 Hz the interval is 7.7 ms. The LT6020-1 enables in 100 µs typical and 120 µs over temperature; the AD5683 already on v8.1 is the external-reference variant and exits power-down in 6 µs. Moving to the R variant with the internal reference would cost 600 µs per wake, so it is ruled out.</p>
           <p class="gate-out out-stop"><b>Measure</b><span>With a boost in the path, this needs bench data rather than assertion. Timing is not the obstacle: the MAX17220 re-reads its output-select resistor on every startup, 600 µs typical and 1.32 ms worst case, and even the worst case fits inside 7.7 ms. Energy is the open question — the startup term alone is up to 200 µA for 600 µs at 130 Hz, about 16 µA averaged, before output-cap charging and conversion losses. Per-pulse gating may still beat holding the rail up for whole trains, so this branch forks the budget rather than closing it.</span></p>
           <p class="gate-out out-go"><b>Continue</b><span>Battery-direct. One 100 µs amplifier enable covering both hemispheres' pulses is a 4.4% duty cycle, so the op amp averages ~10 µA rather than 190 µA.</span></p>
         </li>
@@ -1055,7 +1055,7 @@
 
       <h3>Tentative component selection</h3>
       <p>
-        The analog chain mostly survives: the LT6020 has a shutdown pin, the AD5683 has a power-down mode, and the LT6656 is already sub-µA. None of that is exercised today because the parts are biased continuously. What does change is the MCU and the way the board is powered. v8.1's supply order is backwards — the boost converter is in the always-on path feeding the MCU, and nothing is in the gated path. v9 inverts it: no external converter in the always-on path at all, and a converter in the stimulation path only if gate 1 demands one.
+        The analog chain mostly survives: the LT6020 has a shutdown pin, the AD5683 has a power-down mode, and the LT6656 is already sub-µA. v8.1's firmware already cycles the LT6020's shutdown pin per pulse, but its on-window is long — a 150&nbsp;µs settle plus the stimulating phase plus a 5× recharge phase, roughly 10–50% duty depending on pulse width — and the DAC is never powered down. v9 shortens the window and adds the DAC power-down. What does change is the MCU and the way the board is powered. v8.1's supply order is backwards — the boost converter is in the always-on path feeding the MCU, and nothing is in the gated path. v9 inverts it: no external converter in the always-on path at all, and a converter in the stimulation path only if gate 1 demands one.
       </p>
       <div class="table-wrap">
       <table class="direction parts">
@@ -1094,14 +1094,14 @@
           </tr>
           <tr>
             <td>Current source</td>
-            <td>LT6020 dual + Howland, continuously biased</td>
-            <td>Same amplifier, enabled 100 µs ahead of the pulse pair and shut down between; Howland network scaled ~10×</td>
+            <td>LT6020 dual + Howland, enabled per pulse with a 150 µs settle and a 6× pulse-width on-window (~10–50% duty)</td>
+            <td>Same amplifier, enabled 100 µs ahead of a much shorter pulse pair and shut down between; Howland network scaled ~10×</td>
             <td class="keep">~9.8 µA</td>
           </tr>
           <tr>
             <td>Amplitude</td>
-            <td>AD5683 DAC active, internal reference to be confirmed off</td>
-            <td>Same part, woken for 6 µs per hemisphere with the internal reference held off</td>
+            <td>AD5683 DAC (external-reference variant, VREF from the LT6656), never powered down</td>
+            <td>Same part, woken from power-down for 6 µs per hemisphere</td>
             <td class="keep">~5.6 µA</td>
           </tr>
           <tr>
@@ -1135,7 +1135,7 @@
         That totals roughly 20&nbsp;µA of platform current at 130&nbsp;Hz and 60&nbsp;µs per phase, with the delivered charge adding another 2&nbsp;µA at 100&nbsp;µA per hemisphere — about 22&nbsp;µA, which is what the explorer reports for the v9 preset. A 50&nbsp;mAh LiPo then lasts around 66 days after a 70% derate, against 9.5&nbsp;hours today. The 10–30&nbsp;µA target holds, but the margin is thinner than a parts-only reading suggests, and the dominant term has moved: it is no longer the MCU or the rails but <strong>the amplifier enable window</strong>.
       </p>
       <p>
-        That matters because the 100&nbsp;µs turn-on is a fixed cost per pulse, so this budget degrades close to linearly with stimulation frequency — ~9.8&nbsp;µA for the op amp at 130&nbsp;Hz, ~17.5&nbsp;µA at 250&nbsp;Hz. <strong>Three numbers must be measured before any of it is trustworthy:</strong> the Howland network's standing DC, whether the AD5683 internal reference is genuinely disabled, and how long the Howland output actually takes to settle into an electrode load, which the amplifier's enable spec does not cover.
+        That matters because the 100&nbsp;µs turn-on is a fixed cost per pulse, so this budget degrades close to linearly with stimulation frequency — ~9.8&nbsp;µA for the op amp at 130&nbsp;Hz, ~17.5&nbsp;µA at 250&nbsp;Hz. <strong>Three numbers must be measured before any of it is trustworthy:</strong> the Howland network's standing DC, the Howland bridge balance — the v8.1 netlist has 12&nbsp;kΩ against 10&nbsp;kΩ on the two input paths, which predicts a load-dependent output current — and how long the Howland output actually takes to settle into an electrode load, which the amplifier's enable spec does not cover.
       </p>
 
       <h3>Amplifier selection</h3>
@@ -1253,7 +1253,7 @@
           <tr>
             <td>AD5683 exit power-down</td>
             <td class="keep">6 µs</td>
-            <td colspan="2">Cheap enough to wake every pulse — but only with the internal reference off. Waking that reference costs 600 µs and would dominate everything else.</td>
+            <td colspan="2">Cheap enough to wake every pulse. This is the external-reference AD5683 already on v8.1; the R variant's internal reference would cost 600 µs per wake and would dominate everything else.</td>
           </tr>
           <tr>
             <td>MAX17220 startup</td>
@@ -1517,8 +1517,8 @@
       name: "Creed v8.1",
       mouse: "Yes",
       mouseClass: "mouse-yes",
-      power: "3.15–3.42 mA stim; ~2 d practical",
-      arch: "Howland ±5 V, DAC, analog switching",
+      power: "3.15–3.42 mA stim; ~2.5 d on 2× size-13 zinc-air at 70% derate",
+      arch: "Howland ±5 V, DAC, analog switching; asymmetric 1:5 biphasic",
       pop: "creed"
     },
     {
@@ -1652,11 +1652,11 @@
     },
     analog: {
       title: "Off, per pulse, or always on",
-      html: "<p><strong>Always on</strong> is v8.1: a dual LT6020, Howland network, and analog switches biased continuously on ±5 V — roughly 0.7–0.8 mA for the op-amps alone, before Howland static currents. Independent dual paths roughly double it.</p><p><strong>Per pulse</strong> is the v9 proposal, and it is not free. The LT6020-1 needs 100 µs to come out of shutdown. Time-multiplexed, one enable covers both hemispheres, so the on-window is 100 µs plus two 120 µs pulses — 4.4% of the interval at 130 Hz, about 9.8 µA averaged against 1.4 µA in shutdown. Independent drivers pay the enable twice: ~13.7 µA. That fixed enable time is also why the cost climbs with stimulation rate, reaching ~17.5 µA at 250 Hz.</p><p><strong>Off</strong> means there is no precision analog to duty-cycle at all. STELLA balances charge passively; that is how it reaches 7.6 µA. Choosing this for a Creed-class constant-current source would understate it.</p>"
+      html: "<p><strong>Always on</strong> is the closest model state for v8.1, not a literal description of it. v8.1's firmware does shut the LT6020 down between pulses, but the on-window is long — 150 µs settle, the stimulating phase, then a 5× recharge phase, about 10% of the period at 90 µs and 50% at 600 µs — and it sits on always-on ±5 V rails with the Howland network's static currents, so the cost lands in the same class: up to ~0.8 mA for the dual op amp if held on, before Howland static currents. Independent dual paths roughly double it.</p><p><strong>Per pulse</strong> is the v9 proposal, and it is not free. The LT6020-1 needs 100 µs to come out of shutdown. Time-multiplexed, one enable covers both hemispheres, so the on-window is 100 µs plus two 120 µs pulses — 4.4% of the interval at 130 Hz, about 9.8 µA averaged against 1.4 µA in shutdown. Independent drivers pay the enable twice: ~13.7 µA. That fixed enable time is also why the cost climbs with stimulation rate, reaching ~17.5 µA at 250 Hz.</p><p><strong>Off</strong> means there is no precision analog to duty-cycle at all. STELLA balances charge passively; that is how it reaches 7.6 µA. Choosing this for a Creed-class constant-current source would understate it.</p>"
     },
     dac: {
       title: "Program once, then stop",
-      html: "<p><strong>Continuous</strong> is ~100–500 µA for an AD5683-class part, more if the internal reference stays on. Amplitude flexibility does not require that.</p><p><strong>Per pulse</strong> exploits the 6 µs exit from power-down: wake the DAC, load the code, stimulate, power it back down, for roughly 4 µA averaged. This only holds with the internal reference disabled — waking that costs 600 µs and would dominate everything else.</p><p><strong>None</strong> means resistor-defined amplitude. Cheapest, and too rigid to be the only option.</p>"
+      html: "<p><strong>Continuous</strong> is ~110–180 µA for the external-reference AD5683 on v8.1, which is never powered down. Amplitude flexibility does not require that.</p><p><strong>Per pulse</strong> exploits the 6 µs exit from power-down: wake the DAC, load the code, stimulate, power it back down, for roughly 4 µA averaged. This holds for the external-reference part; the R variant's internal reference would cost 600 µs per wake and would dominate everything else.</p><p><strong>None</strong> means resistor-defined amplitude. Cheapest, and too rigid to be the only option.</p>"
     },
     fixed: {
       title: "Why the waveform is pinned",
@@ -1672,7 +1672,7 @@
     },
     battery: {
       title: "Cell choice changes days, not the ranking",
-      html: "<p>2× 1.4 V zinc-air (hearing aid) is the current Creed direction: excellent nominal capacity and weight. Air access, drying, and discharge shape make it questionable for a sealed implant, and fine for a headstage. A 70% derate is applied so nameplate mAh is not treated as usable energy.</p><p>Silver oxide (V364) is the Fleischer/Grotemeyer mouse default. CR1225 is STELLA’s class. A 50 mAh LiPo is the rechargeable comparison — reusable, heavier, more of an acute pack.</p>"
+      html: "<p>2× 1.4 V zinc-air (hearing aid) in series is what v8.1 runs on — size 13, ~280 mAh at 2.8 V; the list here offers the smaller 312 and 10 sizes. Excellent nominal capacity and weight. Air access, drying, and discharge shape make it questionable for a sealed implant, and fine for a headstage. A 70% derate is applied so nameplate mAh is not treated as usable energy.</p><p>Silver oxide (V364) is the Fleischer/Grotemeyer mouse default. CR1225 is STELLA’s class. A 50 mAh LiPo is the rechargeable comparison — reusable, heavier, more of an acute pack.</p>"
     },
     channels: {
       title: "Two is core; four is a different product",
@@ -1696,7 +1696,7 @@
     },
     creed: {
       title: "Creed v8.1",
-      html: "<p>Extremely flexible, but pays mA-scale infrastructure overhead: battery → 5 V boost → 3.3 V LDO, plus −5 V, dual LT6020, DAC, and analog switches. The stimulator is not what empties the cell.</p>"
+      html: "<p>Extremely flexible, but pays mA-scale infrastructure overhead: battery → 5 V boost → 3.3 V LDO, plus −5 V, dual LT6020, DAC, and analog switches. The stimulator is not what empties the cell.</p><p>Two shared-amplitude channels; asymmetric charge-balanced biphasic (recharge phase at 1/5 amplitude for 5× the pulse width); op amp shut down between pulses; DAC and ±5 V rails always on.</p>"
     },
     creedv9: {
       title: "Creed v9 (new)",

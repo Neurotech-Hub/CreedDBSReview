@@ -1,0 +1,6766 @@
+(export
+	(version "E")
+	(design
+		(source "/Users/gaidica/Library/CloudStorage/Box-Box/Neurotech Hub/Projects/Creed Lab/MouseStim_v8.1/MouseStim_v8.1.kicad_sch")
+		(date "2026-09-11T10:18:58")
+		(tool "Eeschema 10.0.0")
+		(sheet
+			(number "1")
+			(name "/")
+			(tstamps "/")
+			(title_block
+				(title)
+				(company)
+				(rev)
+				(date)
+				(source "MouseStim_v8.1.kicad_sch")
+				(comment
+					(number "1")
+					(value "")
+				)
+				(comment
+					(number "2")
+					(value "")
+				)
+				(comment
+					(number "3")
+					(value "")
+				)
+				(comment
+					(number "4")
+					(value "")
+				)
+				(comment
+					(number "5")
+					(value "")
+				)
+				(comment
+					(number "6")
+					(value "")
+				)
+				(comment
+					(number "7")
+					(value "")
+				)
+				(comment
+					(number "8")
+					(value "")
+				)
+				(comment
+					(number "9")
+					(value "")
+				)
+			)
+		)
+	)
+	(components
+		(comp
+			(ref "AE1")
+			(value "Antenna_Chip")
+			(footprint "0_NeurotechHub:2450AT18B100")
+			(fields
+				(field
+					(name "JLCPCB") "C2917717")
+				(field
+					(name "Footprint") "0_NeurotechHub:2450AT18B100")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "Antenna_Chip")
+				(description "Ceramic chip antenna with pin for PCB trace")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C2917717")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "antenna")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "b2a84602-69f1-4c7e-a0db-c04a8ba3cd8a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "BT1")
+			(value "Battery_Cell")
+			(footprint "0_NeurotechHub:2989")
+			(fields
+				(field
+					(name "DigiKey") "36-2989-ND")
+				(field
+					(name "JLCPCB") "C9900172660")
+				(field
+					(name "Footprint") "0_NeurotechHub:2989")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "Battery_Cell_2988")
+				(description "Single-cell battery")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-2989-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C9900172660")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "battery cell")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "32d2b5d0-46c7-46a3-b0f5-bacf6a8a9397")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "BT2")
+			(value "Battery_Cell")
+			(footprint "0_NeurotechHub:2989")
+			(fields
+				(field
+					(name "DigiKey") "36-2989-ND")
+				(field
+					(name "JLCPCB") "C9900172660")
+				(field
+					(name "Footprint") "0_NeurotechHub:2989")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "Battery_Cell_2988")
+				(description "Single-cell battery")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-2989-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C9900172660")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "battery cell")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "abb35169-bad2-4213-98b3-1849f1e09123")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C1")
+			(value "2.2uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "490-13225-1-ND")
+				(field
+					(name "JLCPCB") "C76933")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "490-13225-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C76933")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "3c859b06-22be-4a45-b8bb-0bfdda3c7eff")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C3")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e69ba61f-7278-46d6-a77f-0db83a77db9c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C4")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "aae5aaa4-41a3-428f-bf43-2d017382e5fe")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C5")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f7b3cb60-7d76-42a1-b201-396da61d15d6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C6")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "bda9cbe2-6708-4887-be31-ae3418677c01")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C7")
+			(value "22pF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "490-6123-1-ND")
+				(field
+					(name "JLCPCB") "C57783")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "490-6123-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C57783")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "47d6f2aa-d102-4aff-808d-3f39ab099400")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C8")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(fields
+				(field
+					(name "DigiKey") "1276-CL05A106MP5NRNCCT-ND")
+				(field
+					(name "JLCPCB") "C163694")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "1276-CL05A106MP5NRNCCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C163694")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "34eb3758-af73-4bdc-b766-7b70682eb7c4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C9")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(fields
+				(field
+					(name "DigiKey") "1276-CL05A106MP5NRNCCT-ND")
+				(field
+					(name "JLCPCB") "C163694")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "1276-CL05A106MP5NRNCCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C163694")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "02d73c6c-31ea-4f1f-967a-90870ddb02d8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C10")
+			(value "470pF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "445-12113-1-ND")
+				(field
+					(name "JLCPCB") "C55020")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "445-12113-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C55020")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5cf308f5-eddb-4616-ac41-d75c8c786609")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C11")
+			(value "470pF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "445-12113-1-ND")
+				(field
+					(name "JLCPCB") "C55020")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "445-12113-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C55020")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "9380c47e-9921-4bdc-956d-223601a8e1f5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C12")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f9f888a0-59b6-4d14-9805-7ea2296f0c4b")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C13")
+			(value "22pF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "490-6123-1-ND")
+				(field
+					(name "JLCPCB") "C57783")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "490-6123-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C57783")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "207f7587-c611-4320-9229-1edf7eba9fd5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C14")
+			(value "470pF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "445-12113-1-ND")
+				(field
+					(name "JLCPCB") "C55020")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "445-12113-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C55020")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "cb5d8942-b0ff-4f64-916e-c198f2cb9a29")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C15")
+			(value "470pF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "445-12113-1-ND")
+				(field
+					(name "JLCPCB") "C55020")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "445-12113-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C55020")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "c45c6fa9-8e02-410b-ac43-ad213bcdc42e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C16")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "633772db-3017-41ba-9f08-c52ce3139bac")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C17")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "119f64d0-759d-4037-b7e5-6ac88fa21cc9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C18")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "9b555113-efb3-4955-984f-cde63467ee44")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C19")
+			(value "1uF")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "DigiKey") "311-3471-1-ND")
+				(field
+					(name "JLCPCB") "C172755")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-3471-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C172755")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "00913ecc-f828-45ec-82c1-ce9f5033d39a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D1")
+			(value "LED")
+			(footprint "LED_SMD:LED_0402_1005Metric")
+			(fields
+				(field
+					(name "DigiKey") "732-11992-1-ND")
+				(field
+					(name "JLCPCB") "C7371904")
+				(field
+					(name "Footprint") "LED_SMD:LED_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "LED")
+				(description "Light emitting diode")
+			)
+			(property
+				(name "DigiKey")
+				(value "732-11992-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C7371904")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "LED diode")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "LED* LED_SMD:* LED_THT:*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "c2355e94-d28b-460e-9fac-3f04fa69bd05")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "D2")
+			(value "D_Schottky")
+			(footprint "Diode_SMD:D_SOD-323_HandSoldering")
+			(description "Schottky diode")
+			(fields
+				(field
+					(name "DigiKey") "1514-CMDSH05-4TRPBFREECT-ND")
+				(field
+					(name "JLCPCB") "C12744")
+				(field
+					(name "Footprint") "Diode_SMD:D_SOD-323_HandSoldering")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Schottky diode")
+			)
+			(libsource
+				(lib "Device")
+				(part "D_Schottky")
+				(description "Schottky diode")
+			)
+			(property
+				(name "DigiKey")
+				(value "1514-CMDSH05-4TRPBFREECT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C12744")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "diode Schottky")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "TO-???* *_Diode_* *SingleDiode* D_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "53e15ebc-9d44-45a8-8729-b7b602cb3ac9")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "IC2")
+			(value "BGM220SC12WGA2R")
+			(footprint "0_NeurotechHub:BGM220S")
+			(datasheet "https://www.silabs.com/documents/public/data-sheets/bgm220s-datasheet.pdf")
+			(description "RF System on a Chip - SoC Wireless Gecko, Bluetooth SiP module, Secure Boot with Root of Trust and Secure Loader (RTSL), 38.4 MHz, 2.4G, 0dB, Built-in antenna/RF, 24 GPIO")
+			(fields
+				(field
+					(name "Height") "1.28")
+				(field
+					(name "Mouser Part Number") "634-BGM220SC12WGA2R")
+				(field
+					(name "Mouser Price/Stock") "https://www.mouser.co.uk/ProductDetail/Silicon-Labs/BGM220SC12WGA2R?qs=7MVldsJ5UawQhjcQMDLKvA%3D%3D")
+				(field
+					(name "Manufacturer_Name") "Silicon Labs")
+				(field
+					(name "Manufacturer_Part_Number") "BGM220SC12WGA2R")
+				(field
+					(name "JLCPCB") "C5136975")
+				(field
+					(name "Footprint") "0_NeurotechHub:BGM220S")
+				(field
+					(name "Datasheet") "https://www.silabs.com/documents/public/data-sheets/bgm220s-datasheet.pdf")
+				(field
+					(name "Description") "RF System on a Chip - SoC Wireless Gecko, Bluetooth SiP module, Secure Boot with Root of Trust and Secure Loader (RTSL), 38.4 MHz, 2.4G, 0dB, Built-in antenna/RF, 24 GPIO")
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "BGM220S")
+				(description "RF System on a Chip - SoC Wireless Gecko, Bluetooth SiP module, Secure Boot with Root of Trust and Secure Loader (RTSL), 38.4 MHz, 2.4G, 0dB, Built-in antenna/RF, 24 GPIO")
+			)
+			(property
+				(name "Height")
+				(value "1.28")
+			)
+			(property
+				(name "Mouser Part Number")
+				(value "634-BGM220SC12WGA2R")
+			)
+			(property
+				(name "Mouser Price/Stock")
+				(value "https://www.mouser.co.uk/ProductDetail/Silicon-Labs/BGM220SC12WGA2R?qs=7MVldsJ5UawQhjcQMDLKvA%3D%3D")
+			)
+			(property
+				(name "Manufacturer_Name")
+				(value "Silicon Labs")
+			)
+			(property
+				(name "Manufacturer_Part_Number")
+				(value "BGM220SC12WGA2R")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C5136975")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "1f18774a-f0f7-4133-bf7f-e980d2f00fe6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "14")
+						)
+						(pin
+							(num "15")
+						)
+						(pin
+							(num "16")
+						)
+						(pin
+							(num "17")
+						)
+						(pin
+							(num "18")
+						)
+						(pin
+							(num "19")
+						)
+						(pin
+							(num "20")
+						)
+						(pin
+							(num "21")
+						)
+						(pin
+							(num "22")
+						)
+						(pin
+							(num "23")
+						)
+						(pin
+							(num "24")
+						)
+						(pin
+							(num "25")
+						)
+						(pin
+							(num "26")
+						)
+						(pin
+							(num "27")
+						)
+						(pin
+							(num "28")
+						)
+						(pin
+							(num "29")
+						)
+						(pin
+							(num "30")
+						)
+						(pin
+							(num "31")
+						)
+						(pin
+							(num "32")
+						)
+						(pin
+							(num "33")
+						)
+						(pin
+							(num "34")
+						)
+						(pin
+							(num "35")
+						)
+						(pin
+							(num "36")
+						)
+						(pin
+							(num "37")
+						)
+						(pin
+							(num "38")
+						)
+						(pin
+							(num "39")
+						)
+						(pin
+							(num "40")
+						)
+						(pin
+							(num "41")
+						)
+						(pin
+							(num "42")
+						)
+						(pin
+							(num "43")
+						)
+						(pin
+							(num "44")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J1")
+			(value "Conn_01x04_Socket")
+			(footprint "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical")
+			(description "Generic connector, single row, 01x04, script generated")
+			(fields
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "DigiKey") "ED3864-04-ND")
+				(field
+					(name "Footprint") "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Generic connector, single row, 01x04, script generated")
+			)
+			(libsource
+				(lib "Connector")
+				(part "Conn_01x04_Socket")
+				(description "Generic connector, single row, 01x04, script generated")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "DigiKey")
+				(value "ED3864-04-ND")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "connector")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Connector*:*_1x??_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "61d4626e-1f83-40cc-94e7-53a945360422")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "L2")
+			(value "2.2uH")
+			(footprint "Inductor_SMD:L_0805_2012Metric")
+			(fields
+				(field
+					(name "DigiKey") "732-74479775222ACT-ND")
+				(field
+					(name "JLCPCB") "C1043")
+				(field
+					(name "Footprint") "Inductor_SMD:L_0805_2012Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "L")
+				(description "Inductor")
+			)
+			(property
+				(name "DigiKey")
+				(value "732-74479775222ACT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C1043")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "inductor choke coil reactor magnetic")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Choke_* *Coil* Inductor_* L_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "a5129a93-dce8-4726-ac6f-1eb15b4dcf78")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R1")
+			(value "1K")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "311-1KMCT-ND")
+				(field
+					(name "JLCPCB") "C270365")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "311-1KMCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C270365")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "11be3f34-91fb-48be-b761-5539d1986f3e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R2")
+			(value "10.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020110K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C490808")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020110K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490808")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f2ffe472-2e41-4021-9c3a-b1fc25d223aa")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R3")
+			(value "12.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020112K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C320670")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020112K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C320670")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "9437c1ec-2011-4fdf-bd08-1c5143beb3d7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R4")
+			(value "10.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020110K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C490808")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020110K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490808")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "ab6d72a9-eb8b-42ae-a111-8b964df7a191")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R5")
+			(value "10.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020110K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C490808")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020110K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490808")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "b56f0b33-3be7-4835-9d7f-c8ebd61c6cae")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R6")
+			(value "2.0k")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "P2.0KBXCT-ND")
+				(field
+					(name "JLCPCB") "C490810")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "P2.0KBXCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490810")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "8f18096b-3472-4fe2-b5f5-3b155cb3eff7")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R7")
+			(value "330")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "YAG2604CT-ND")
+				(field
+					(name "JLCPCB") "C320833")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "YAG2604CT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C320833")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f8ee78f1-08f0-4888-be75-ae9ddccb1ad6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R8")
+			(value "330")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "YAG2604CT-ND")
+				(field
+					(name "JLCPCB") "C320833")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "YAG2604CT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C320833")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5fe61272-9cbd-4374-b1b1-1ed1ebfeeee6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R11")
+			(value "12.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020112K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C320670")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020112K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C320670")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "489338d0-29d7-40bc-b0d3-f604717cdd93")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R12")
+			(value "10.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020110K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C490808")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020110K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490808")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f5a605bb-8ee2-48be-ab26-dd1e9cb0c91e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R13")
+			(value "2.0k")
+			(footprint "Capacitor_SMD:C_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "P2.0KBXCT-ND")
+				(field
+					(name "JLCPCB") "C490810")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "P2.0KBXCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490810")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "66c5ddc3-85ff-4065-abd0-24238091589c")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R14")
+			(value "10.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020110K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C490808")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020110K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490808")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "04ab19a9-1be5-4eb7-a170-33c32b9ce53a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R15")
+			(value "10.0k")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "541-TNPW020110K0BEEDCT-ND")
+				(field
+					(name "JLCPCB") "C490808")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "541-TNPW020110K0BEEDCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C490808")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "7a6afda1-24c3-4521-8ed0-d3f63f4f320d")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R16")
+			(value "330")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "YAG2604CT-ND")
+				(field
+					(name "JLCPCB") "C320833")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "YAG2604CT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C320833")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "ff3ec21b-4ae4-4f4d-8f3b-09efaaf501f6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R17")
+			(value "330")
+			(footprint "Resistor_SMD:R_0201_0603Metric")
+			(fields
+				(field
+					(name "DigiKey") "YAG2604CT-ND")
+				(field
+					(name "JLCPCB") "C320833")
+				(field
+					(name "Footprint") "Resistor_SMD:R_0201_0603Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "DigiKey")
+				(value "YAG2604CT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C320833")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "e6aaa53c-6bf2-4d0a-a3fc-55f5e358ba19")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP2")
+			(value "TestPoint")
+			(footprint "0_NeurotechHub:TestPoint_Tiny")
+			(fields
+				(field
+					(name "DigiKey") "36-5000-ND")
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "Footprint") "0_NeurotechHub:TestPoint_Tiny")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-5000-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "0bee63b0-9ebf-431c-8476-5aa3b0d31b94")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP3")
+			(value "TestPoint")
+			(footprint "0_NeurotechHub:TestPoint_Tiny")
+			(fields
+				(field
+					(name "DigiKey") "36-5000-ND")
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "Footprint") "0_NeurotechHub:TestPoint_Tiny")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-5000-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "6cb4f838-4a78-45ef-8bf7-d570d22322c6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP7")
+			(value "TestPoint")
+			(footprint "0_NeurotechHub:TestPoint_Tiny")
+			(fields
+				(field
+					(name "DigiKey") "36-5000-ND")
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "Footprint") "0_NeurotechHub:TestPoint_Tiny")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-5000-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5c49fa2f-186f-48f9-b82f-93aed8b3e584")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP8")
+			(value "TestPoint")
+			(footprint "0_NeurotechHub:TestPoint_Tiny")
+			(fields
+				(field
+					(name "DigiKey") "36-5000-ND")
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "Footprint") "0_NeurotechHub:TestPoint_Tiny")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-5000-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "7e0c33f1-08f7-4932-b723-0bc36b18fccb")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP10")
+			(value "TestPoint")
+			(footprint "0_NeurotechHub:TestPoint_Tiny")
+			(fields
+				(field
+					(name "DigiKey") "36-5000-ND")
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "Footprint") "0_NeurotechHub:TestPoint_Tiny")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-5000-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "50c390bd-d5bd-433f-8bac-1f1697423b10")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP11")
+			(value "TestPoint")
+			(footprint "0_NeurotechHub:TestPoint_Tiny")
+			(fields
+				(field
+					(name "DigiKey") "36-5000-ND")
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "Footprint") "0_NeurotechHub:TestPoint_Tiny")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "DigiKey")
+				(value "36-5000-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "18178cd0-d04d-40d0-98aa-cef51534c0b6")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U1")
+			(value "MAX17220ELT_T")
+			(footprint "0_NeurotechHub:MAX17220ELT_SON65P200X200X80-6N")
+			(datasheet "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17220-MAX17225.pdf")
+			(description "Conv DC-DC Single Step Up 0.4V to 5.5V 6-Pin uDFN")
+			(fields
+				(field
+					(name "DigiKey") "MAX17220ELT+TCT-ND")
+				(field
+					(name "MP") "MAX17220ELT+T")
+				(field
+					(name "JLCPCB") "C879657")
+				(field
+					(name "Footprint") "0_NeurotechHub:MAX17220ELT_SON65P200X200X80-6N")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17220-MAX17225.pdf")
+				(field
+					(name "Description") "Conv DC-DC Single Step Up 0.4V to 5.5V 6-Pin uDFN")
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "MAX17220ELT_T")
+				(description "Conv DC-DC Single Step Up 0.4V to 5.5V 6-Pin uDFN")
+			)
+			(property
+				(name "DigiKey")
+				(value "MAX17220ELT+TCT-ND")
+			)
+			(property
+				(name "MP")
+				(value "MAX17220ELT+T")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C879657")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "0a04e988-18bb-45ee-a657-0468fcd66604")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U2")
+			(value "TC2050-IDC")
+			(footprint "0_NeurotechHub:TC2050-IDC-FP")
+			(fields
+				(field
+					(name "JLCPCB")
+				)
+				(field
+					(name "Footprint") "0_NeurotechHub:TC2050-IDC-FP")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "TagConnect-TC2050-IDC")
+				(description "")
+			)
+			(property
+				(name "JLCPCB")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "98e7021c-f044-4865-9154-3878d4d25720")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U3")
+			(value "DRV5032-OMNIPOLAR")
+			(footprint "0_NeurotechHub:DRV5032_DMR0004A_NV")
+			(datasheet "https://www.ti.com/lit/ds/symlink/drv5032.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1726375239554")
+			(fields
+				(field
+					(name "DigiKey") "296-48908-1-ND")
+				(field
+					(name "JLCPCB") "C2152496")
+				(field
+					(name "Footprint") "0_NeurotechHub:DRV5032_DMR0004A_NV")
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/drv5032.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1726375239554")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "DRV5032-OMNIPOLAR")
+				(description "")
+			)
+			(property
+				(name "DigiKey")
+				(value "296-48908-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C2152496")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "DRV5032DUDMRR")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "DMR0004A DMR0004A_NV")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "acf7db43-cddc-4942-a420-203988e034dc")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U4")
+			(value "AD5683")
+			(footprint "0_NeurotechHub:AD5681R")
+			(datasheet "https://www.analog.com/media/en/technical-documentation/data-sheets/AD5683R_5682R_5681R_5683.pdf")
+			(fields
+				(field
+					(name "DigiKey") "505-AD5683BCPZ-RL7CT-ND")
+				(field
+					(name "JLCPCB") "C578272")
+				(field
+					(name "Footprint") "0_NeurotechHub:AD5681R")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/AD5683R_5682R_5681R_5683.pdf")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "AD5683")
+				(description "")
+			)
+			(property
+				(name "DigiKey")
+				(value "505-AD5683BCPZ-RL7CT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C578272")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "AD5683RACPZ-RL7")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "CP_8_10_ADI CP_8_10_ADI-M CP_8_10_ADI-L")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "9c145f90-28ed-4dc7-ad6a-b3bc15a1a441")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "9")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U5")
+			(value "LT6656-DFN")
+			(footprint "0_NeurotechHub:LT6656-6-DFN")
+			(datasheet "https://www.analog.com/media/en/technical-documentation/data-sheets/lt6656.pdf")
+			(fields
+				(field
+					(name "DigiKey") "505-LT6656BIDC-1.25#TRMPBFCT-ND")
+				(field
+					(name "JLCPCB") "C673410")
+				(field
+					(name "Footprint") "0_NeurotechHub:LT6656-6-DFN")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/lt6656.pdf")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "LT6656-DFN")
+				(description "")
+			)
+			(property
+				(name "DigiKey")
+				(value "505-LT6656BIDC-1.25#TRMPBFCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C673410")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "f039f950-855b-419b-a0cc-71a947c1a624")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "7")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U6")
+			(value "LT6020IDD-1-PBF")
+			(footprint "0_NeurotechHub:LT6020-1")
+			(datasheet "https://www.analog.com/media/en/technical-documentation/data-sheets/60201fa.pdf")
+			(description "Dual Micropower, 5V/µs Precision Rail-to-Rail Output Amplifier")
+			(fields
+				(field
+					(name "DigiKey") "LT6020IDD-1#PBF-ND")
+				(field
+					(name "JLCPCB") "C672807")
+				(field
+					(name "Footprint") "0_NeurotechHub:LT6020-1")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/60201fa.pdf")
+				(field
+					(name "Description") "Dual Micropower, 5V/µs Precision Rail-to-Rail Output Amplifier")
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "LT6020IDD-1-PBF")
+				(description "https://www.analog.com/media/en/technical-documentation/data-sheets/60201fa.pdf")
+			)
+			(property
+				(name "DigiKey")
+				(value "LT6020IDD-1#PBF-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C672807")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "LT6020IDD-1#PBF")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "DFN-10_DD_LIT DFN-10_DD_LIT-M DFN-10_DD_LIT-L")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "723ac450-5bcf-4399-be73-7cc02f8ba2d8")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "11")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U7")
+			(value "MAX1853")
+			(footprint "0_NeurotechHub:MAX1852")
+			(datasheet "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX1852-MAX1853.pdf")
+			(fields
+				(field
+					(name "DigiKey") "MAX1853EXT+TCT-ND")
+				(field
+					(name "JLCPCB") "C143384")
+				(field
+					(name "Footprint") "0_NeurotechHub:MAX1852")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX1852-MAX1853.pdf")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "MAX185X")
+				(description "")
+			)
+			(property
+				(name "DigiKey")
+				(value "MAX1853EXT+TCT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C143384")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "3b5031ff-3934-43ff-90ff-ec561eb44052")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "5")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U9")
+			(value "ADG1236-LFCSP")
+			(footprint "0_NeurotechHub:ADG1236-LFCSP")
+			(datasheet "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG1236.pdf")
+			(fields
+				(field
+					(name "DigiKey") "505-ADG1236YCPZ-500RL7CT-ND")
+				(field
+					(name "JLCPCB") "C207455")
+				(field
+					(name "Footprint") "0_NeurotechHub:ADG1236-LFCSP")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG1236.pdf")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "ADG1236-LFCSP")
+				(description "")
+			)
+			(property
+				(name "DigiKey")
+				(value "505-ADG1236YCPZ-500RL7CT-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C207455")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "433daea1-b3df-4ed0-bc5e-244cc72ec1e4")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "9")
+						)
+						(pin
+							(num "11")
+						)
+						(pin
+							(num "12")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "8")
+						)
+						(pin
+							(num "10")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "13")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "U10")
+			(value "TPS709")
+			(footprint "0_NeurotechHub:TPS709-WSON")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps709.pdf?ts=1715626311637")
+			(fields
+				(field
+					(name "DigiKey") "296-40930-1-ND")
+				(field
+					(name "JLCPCB") "C165164")
+				(field
+					(name "Footprint") "0_NeurotechHub:TPS709-WSON")
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps709.pdf?ts=1715626311637")
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "0_NeurotechHub")
+				(part "TPS709")
+				(description "")
+			)
+			(property
+				(name "DigiKey")
+				(value "296-40930-1-ND")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C165164")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "5d56be2d-23bc-48d2-acb6-3dcb753afd9a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "6")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "5")
+						)
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "7")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "Y1")
+			(value "Crystal")
+			(footprint "0_NeurotechHub:XTAL_ECX-1210_ECS")
+			(fields
+				(field
+					(name "JLCPCB") "C5682932")
+				(field
+					(name "Footprint") "0_NeurotechHub:XTAL_ECX-1210_ECS")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(libsource
+				(lib "Device")
+				(part "Crystal")
+				(description "Two pin crystal")
+			)
+			(property
+				(name "JLCPCB")
+				(value "C5682932")
+			)
+			(property
+				(name "Sheetname")
+				(value "MouseStim_v8.1")
+			)
+			(property
+				(name "Sheetfile")
+				(value "MouseStim_v8.1.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "quartz ceramic resonator oscillator")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Crystal*")
+			)
+			(sheetpath
+				(names "/")
+				(tstamps "/")
+			)
+			(tstamps "d968a0c8-34b0-47fe-ae8f-41b8daf26be1")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+	)
+	(groups)
+	(variants)
+	(libparts
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "AD5683")
+			(docs "AD5683")
+			(footprints
+				(fp "CP_8_10_ADI")
+				(fp "CP_8_10_ADI-M")
+				(fp "CP_8_10_ADI-L")
+			)
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "AD5683")
+				(field
+					(name "Footprint") "0_NeurotechHub:AD5681R")
+				(field
+					(name "Datasheet") "AD5683")
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "unspecified")
+				)
+				(pin
+					(num "2")
+					(name "*LDAC")
+					(type "unspecified")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "unspecified")
+				)
+				(pin
+					(num "4")
+					(name "SCLK")
+					(type "unspecified")
+				)
+				(pin
+					(num "5")
+					(name "*SYNC")
+					(type "unspecified")
+				)
+				(pin
+					(num "6")
+					(name "SDI")
+					(type "unspecified")
+				)
+				(pin
+					(num "7")
+					(name "VREF")
+					(type "unspecified")
+				)
+				(pin
+					(num "8")
+					(name "VOUT")
+					(type "unspecified")
+				)
+				(pin
+					(num "9")
+					(name "EP")
+					(type "unspecified")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "ADG1236-LFCSP")
+			(docs "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG1236.pdf")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "ADG1236-LFCSP")
+				(field
+					(name "Footprint") "0_NeurotechHub:ADG1236-LFCSP")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/ADG1236.pdf")
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "D1")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "S1B")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "V_{SS}")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "GND")
+					(type "input")
+				)
+				(pin
+					(num "5")
+					(name "IN2")
+					(type "input")
+				)
+				(pin
+					(num "6")
+					(name "S2A")
+					(type "input")
+				)
+				(pin
+					(num "7")
+					(name "D2")
+					(type "input")
+				)
+				(pin
+					(num "8")
+					(name "S2B")
+					(type "input")
+				)
+				(pin
+					(num "9")
+					(name "V_{DD}")
+					(type "input")
+				)
+				(pin
+					(num "10")
+					(name "NC")
+					(type "input")
+				)
+				(pin
+					(num "11")
+					(name "IN1")
+					(type "input")
+				)
+				(pin
+					(num "12")
+					(name "S1A")
+					(type "input")
+				)
+				(pin
+					(num "13")
+					(name "EGP")
+					(type "input")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "BGM220S")
+			(description "RF System on a Chip - SoC Wireless Gecko, Bluetooth SiP module, Secure Boot with Root of Trust and Secure Loader (RTSL), 38.4 MHz, 2.4G, 0dB, Built-in antenna/RF, 24 GPIO")
+			(docs "https://www.silabs.com/documents/public/data-sheets/bgm220s-datasheet.pdf")
+			(fields
+				(field
+					(name "Reference") "IC")
+				(field
+					(name "Value") "BGM220S")
+				(field
+					(name "Footprint") "0_NeurotechHub:BGM220S")
+				(field
+					(name "Datasheet") "https://www.silabs.com/documents/public/data-sheets/bgm220s-datasheet.pdf")
+				(field
+					(name "Description") "RF System on a Chip - SoC Wireless Gecko, Bluetooth SiP module, Secure Boot with Root of Trust and Secure Loader (RTSL), 38.4 MHz, 2.4G, 0dB, Built-in antenna/RF, 24 GPIO")
+				(field
+					(name "Height") "1.28")
+				(field
+					(name "Mouser Part Number") "634-BGM220SC12WGA2R")
+				(field
+					(name "Mouser Price/Stock") "https://www.mouser.co.uk/ProductDetail/Silicon-Labs/BGM220SC12WGA2R?qs=7MVldsJ5UawQhjcQMDLKvA%3D%3D")
+				(field
+					(name "Manufacturer_Name") "Silicon Labs")
+				(field
+					(name "Manufacturer_Part_Number") "BGM220SC12WGA2R")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "NC_1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "ANT_IN")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "RF_2G4")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "GND_1")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "GND_2")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "PB04")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "PB03")
+					(type "passive")
+				)
+				(pin
+					(num "8")
+					(name "PB02")
+					(type "passive")
+				)
+				(pin
+					(num "9")
+					(name "PB01")
+					(type "passive")
+				)
+				(pin
+					(num "10")
+					(name "PB00")
+					(type "passive")
+				)
+				(pin
+					(num "11")
+					(name "PA00")
+					(type "passive")
+				)
+				(pin
+					(num "12")
+					(name "PA01")
+					(type "passive")
+				)
+				(pin
+					(num "13")
+					(name "PA02")
+					(type "passive")
+				)
+				(pin
+					(num "14")
+					(name "DECOUPLE")
+					(type "passive")
+				)
+				(pin
+					(num "15")
+					(name "PA03")
+					(type "passive")
+				)
+				(pin
+					(num "16")
+					(name "PA04")
+					(type "passive")
+				)
+				(pin
+					(num "17")
+					(name "PA05")
+					(type "passive")
+				)
+				(pin
+					(num "18")
+					(name "PA06")
+					(type "passive")
+				)
+				(pin
+					(num "19")
+					(name "PA07")
+					(type "passive")
+				)
+				(pin
+					(num "20")
+					(name "PA08")
+					(type "passive")
+				)
+				(pin
+					(num "21")
+					(name "VREG")
+					(type "passive")
+				)
+				(pin
+					(num "22")
+					(name "VREGVDD")
+					(type "passive")
+				)
+				(pin
+					(num "23")
+					(name "IOVDD")
+					(type "passive")
+				)
+				(pin
+					(num "24")
+					(name "PD03")
+					(type "passive")
+				)
+				(pin
+					(num "25")
+					(name "PD02")
+					(type "passive")
+				)
+				(pin
+					(num "26")
+					(name "PD01")
+					(type "passive")
+				)
+				(pin
+					(num "27")
+					(name "PD00")
+					(type "passive")
+				)
+				(pin
+					(num "28")
+					(name "PC00")
+					(type "passive")
+				)
+				(pin
+					(num "29")
+					(name "PC01")
+					(type "passive")
+				)
+				(pin
+					(num "30")
+					(name "PC02")
+					(type "passive")
+				)
+				(pin
+					(num "31")
+					(name "PC03")
+					(type "passive")
+				)
+				(pin
+					(num "32")
+					(name "PC04")
+					(type "passive")
+				)
+				(pin
+					(num "33")
+					(name "PC05")
+					(type "passive")
+				)
+				(pin
+					(num "34")
+					(name "PC06")
+					(type "passive")
+				)
+				(pin
+					(num "35")
+					(name "RESETN")
+					(type "passive")
+				)
+				(pin
+					(num "36")
+					(name "GND_3")
+					(type "passive")
+				)
+				(pin
+					(num "37")
+					(name "NC_2")
+					(type "passive")
+				)
+				(pin
+					(num "38")
+					(name "NC_3")
+					(type "passive")
+				)
+				(pin
+					(num "39")
+					(name "NC_4")
+					(type "passive")
+				)
+				(pin
+					(num "40")
+					(name "ANT_OUT")
+					(type "passive")
+				)
+				(pin
+					(num "41")
+					(name "GND_4")
+					(type "passive")
+				)
+				(pin
+					(num "42")
+					(name "GND_5")
+					(type "passive")
+				)
+				(pin
+					(num "43")
+					(name "GND_6")
+					(type "passive")
+				)
+				(pin
+					(num "44")
+					(name "GND_7")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "Battery_Cell_2988")
+			(description "Single-cell battery")
+			(fields
+				(field
+					(name "Reference") "BT")
+				(field
+					(name "Value") "Battery_Cell")
+				(field
+					(name "Footprint") "0_NeurotechHub:2988_7.9mmBatteryContact")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Single-cell battery")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "+")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "-")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "DRV5032-OMNIPOLAR")
+			(docs "https://www.ti.com/lit/ds/symlink/drv5032.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1726375239554")
+			(footprints
+				(fp "DMR0004A")
+				(fp "DMR0004A_NV")
+			)
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "DRV5032-OMNIPOLAR")
+				(field
+					(name "Footprint") "0_NeurotechHub:DRV5032_DMR0004A_NV")
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/drv5032.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1726375239554")
+				(field
+					(name "Description")
+				)
+				(field
+					(name "DigiKey") "296-48908-1-ND")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VCC")
+					(type "power_in")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "power_in")
+				)
+				(pin
+					(num "3")
+					(name "NC")
+					(type "output")
+				)
+				(pin
+					(num "4")
+					(name "OUT")
+					(type "output")
+				)
+				(pin
+					(num "5")
+					(name "PAD")
+					(type "unspecified")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "LT6020IDD-1-PBF")
+			(description "https://www.analog.com/media/en/technical-documentation/data-sheets/60201fa.pdf")
+			(docs "LT6020IDD-1-PBF")
+			(footprints
+				(fp "DFN-10_DD_LIT")
+				(fp "DFN-10_DD_LIT-M")
+				(fp "DFN-10_DD_LIT-L")
+			)
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "LT6020IDD-1-PBF")
+				(field
+					(name "Footprint") "0_NeurotechHub:LT6020-1")
+				(field
+					(name "Datasheet") "LT6020IDD-1-PBF")
+				(field
+					(name "Description") "https://www.analog.com/media/en/technical-documentation/data-sheets/60201fa.pdf")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUTA")
+					(type "output")
+				)
+				(pin
+					(num "2")
+					(name "-INA")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "+INA")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "V-")
+					(type "power_in")
+				)
+				(pin
+					(num "5")
+					(name "DGND")
+					(type "power_in")
+				)
+				(pin
+					(num "6")
+					(name "EN")
+					(type "input")
+				)
+				(pin
+					(num "7")
+					(name "+INB")
+					(type "input")
+				)
+				(pin
+					(num "8")
+					(name "-INB")
+					(type "input")
+				)
+				(pin
+					(num "9")
+					(name "OUTB")
+					(type "output")
+				)
+				(pin
+					(num "10")
+					(name "V+")
+					(type "power_in")
+				)
+				(pin
+					(num "11")
+					(name "EPAD")
+					(type "unspecified")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "LT6656-DFN")
+			(docs "https://www.analog.com/media/en/technical-documentation/data-sheets/lt6656.pdf")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "LT6656-DFN")
+				(field
+					(name "Footprint") "0_NeurotechHub:LT6656-6-DFN")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/lt6656.pdf")
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "NC")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "V_{out}")
+					(type "input")
+				)
+				(pin
+					(num "5")
+					(name "NC")
+					(type "input")
+				)
+				(pin
+					(num "6")
+					(name "V_{in}")
+					(type "input")
+				)
+				(pin
+					(num "7")
+					(name "EGP")
+					(type "input")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "MAX17220ELT_T")
+			(description "Conv DC-DC Single Step Up 0.4V to 5.5V 6-Pin uDFN")
+			(docs "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17220-MAX17225.pdf")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "MAX17220ELT_T")
+				(field
+					(name "Footprint") "0_NeurotechHub:MAX17220ELT_SON65P200X200X80-6N")
+				(field
+					(name "Datasheet") "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17220-MAX17225.pdf")
+				(field
+					(name "Description") "Conv DC-DC Single Step Up 0.4V to 5.5V 6-Pin uDFN")
+				(field
+					(name "MP") "MAX17220ELT+T")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUT")
+					(type "output")
+				)
+				(pin
+					(num "2")
+					(name "LX")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "power_in")
+				)
+				(pin
+					(num "4")
+					(name "SEL")
+					(type "input")
+				)
+				(pin
+					(num "5")
+					(name "IN")
+					(type "input")
+				)
+				(pin
+					(num "6")
+					(name "EN")
+					(type "input")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "MAX185X")
+			(docs "https://www.digikey.com/en/products/detail/analog-devices-inc-maxim-integrated/MAX1852EXT-T/1520292")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "MAX185X")
+				(field
+					(name "Footprint") "0_NeurotechHub:MAX1852")
+				(field
+					(name "Datasheet") "https://www.digikey.com/en/products/detail/analog-devices-inc-maxim-integrated/MAX1852EXT-T/1520292")
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUT")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "~{SHDN}")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "IN")
+					(type "input")
+				)
+				(pin
+					(num "5")
+					(name "C1-")
+					(type "input")
+				)
+				(pin
+					(num "6")
+					(name "C1+")
+					(type "input")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "TPS709")
+			(docs "https://www.ti.com/lit/ds/symlink/tps709.pdf?ts=1715626311637")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TPS709")
+				(field
+					(name "Footprint") "0_NeurotechHub:TPS709-WSON")
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps709.pdf?ts=1715626311637")
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUT")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "NC")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "GND")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "EN")
+					(type "input")
+				)
+				(pin
+					(num "5")
+					(name "NC")
+					(type "input")
+				)
+				(pin
+					(num "6")
+					(name "IN")
+					(type "input")
+				)
+				(pin
+					(num "7")
+					(name "EGP")
+					(type "input")
+				)
+			)
+		)
+		(libpart
+			(lib "0_NeurotechHub")
+			(part "TagConnect-TC2050-IDC")
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TagConnect-TC2050-IDC")
+				(field
+					(name "Footprint") "Tag-Connect:TC2050-IDC-FP")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description")
+				)
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "VDD")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "GND")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "RESET_{N}")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "VCOM_RX")
+					(type "input")
+				)
+				(pin
+					(num "5")
+					(name "VCOM_TX")
+					(type "input")
+				)
+				(pin
+					(num "6")
+					(name "SWO")
+					(type "input")
+				)
+				(pin
+					(num "7")
+					(name "SWDIO")
+					(type "input")
+				)
+				(pin
+					(num "8")
+					(name "SWCLK")
+					(type "input")
+				)
+				(pin
+					(num "9")
+					(name "PTI_FRAME")
+					(type "input")
+				)
+				(pin
+					(num "10")
+					(name "PTI_DATA")
+					(type "input")
+				)
+			)
+		)
+		(libpart
+			(lib "Connector")
+			(part "Conn_01x04_Socket")
+			(description "Generic connector, single row, 01x04, script generated")
+			(footprints
+				(fp "Connector*:*_1x??_*")
+			)
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "Conn_01x04_Socket")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Generic connector, single row, 01x04, script generated")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "Pin_1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "Pin_2")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "Pin_3")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "Pin_4")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Connector")
+			(part "TestPoint")
+			(description "test point")
+			(footprints
+				(fp "Pin*")
+				(fp "Test*")
+			)
+			(fields
+				(field
+					(name "Reference") "TP")
+				(field
+					(name "Value") "TestPoint")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "test point")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "Antenna_Chip")
+			(description "Ceramic chip antenna with pin for PCB trace")
+			(fields
+				(field
+					(name "Reference") "AE")
+				(field
+					(name "Value") "Antenna_Chip")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Ceramic chip antenna with pin for PCB trace")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "FEED")
+					(type "input")
+				)
+				(pin
+					(num "2")
+					(name "PCB_Trace")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "C")
+			(description "Unpolarized capacitor")
+			(footprints
+				(fp "C_*")
+			)
+			(fields
+				(field
+					(name "Reference") "C")
+				(field
+					(name "Value") "C")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "Crystal")
+			(description "Two pin crystal")
+			(footprints
+				(fp "Crystal*")
+			)
+			(fields
+				(field
+					(name "Reference") "Y")
+				(field
+					(name "Value") "Crystal")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Two pin crystal")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "D_Schottky")
+			(description "Schottky diode")
+			(footprints
+				(fp "TO-???*")
+				(fp "*_Diode_*")
+				(fp "*SingleDiode*")
+				(fp "D_*")
+			)
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "D_Schottky")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Schottky diode")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "K")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "A")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "L")
+			(description "Inductor")
+			(footprints
+				(fp "Choke_*")
+				(fp "*Coil*")
+				(fp "Inductor_*")
+				(fp "L_*")
+			)
+			(fields
+				(field
+					(name "Reference") "L")
+				(field
+					(name "Value") "L")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Inductor")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "LED")
+			(description "Light emitting diode")
+			(footprints
+				(fp "LED*")
+				(fp "LED_SMD:*")
+				(fp "LED_THT:*")
+			)
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "LED")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Light emitting diode")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "K")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "A")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Device")
+			(part "R")
+			(description "Resistor")
+			(footprints
+				(fp "R_*")
+			)
+			(fields
+				(field
+					(name "Reference") "R")
+				(field
+					(name "Value") "R")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "")
+					(type "passive")
+				)
+			)
+		)
+	)
+	(libraries
+		(library
+			(logical "0_NeurotechHub")
+			(uri "/Users/gaidica/Library/CloudStorage/Box-Box/Neurotech Hub/KiCad/Library/NeurotechHub.kicad_sym")
+		)
+		(library
+			(logical "Connector")
+			(uri "${KICAD10_SYMBOL_DIR}/Connector.kicad_sym")
+		)
+		(library
+			(logical "Device")
+			(uri "${KICAD10_SYMBOL_DIR}/Device.kicad_sym")
+		)
+	)
+	(nets
+		(net
+			(code "1")
+			(name "+5V")
+			(class "Default")
+			(node
+				(ref "C16")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C17")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C3")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C4")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C8")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP8")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "1")
+				(pinfunction "OUT_1")
+				(pintype "output")
+			)
+			(node
+				(ref "U10")
+				(pin "4")
+				(pinfunction "EN_4")
+				(pintype "input")
+			)
+			(node
+				(ref "U10")
+				(pin "6")
+				(pinfunction "IN_6")
+				(pintype "input")
+			)
+			(node
+				(ref "U5")
+				(pin "6")
+				(pinfunction "V_{in}_6")
+				(pintype "input")
+			)
+			(node
+				(ref "U6")
+				(pin "10")
+				(pinfunction "V+_10")
+				(pintype "power_in")
+			)
+			(node
+				(ref "U7")
+				(pin "3")
+				(pinfunction "~{SHDN}_3")
+				(pintype "input")
+			)
+			(node
+				(ref "U7")
+				(pin "4")
+				(pinfunction "IN_4")
+				(pintype "input")
+			)
+			(node
+				(ref "U9")
+				(pin "9")
+				(pinfunction "V_{DD}_9")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "2")
+			(name "+BATT")
+			(class "Default")
+			(node
+				(ref "BT2")
+				(pin "1")
+				(pinfunction "+_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C9")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "30")
+				(pinfunction "PC02_30")
+				(pintype "passive")
+			)
+			(node
+				(ref "L2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "5")
+				(pinfunction "IN_5")
+				(pintype "input")
+			)
+			(node
+				(ref "U1")
+				(pin "6")
+				(pinfunction "EN_6")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "3")
+			(name "-5V")
+			(class "Default")
+			(node
+				(ref "C12")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C16")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "4")
+				(pinfunction "V-_4")
+				(pintype "power_in")
+			)
+			(node
+				(ref "U7")
+				(pin "1")
+				(pinfunction "OUT_1")
+				(pintype "input")
+			)
+			(node
+				(ref "U9")
+				(pin "13")
+				(pinfunction "EGP_13")
+				(pintype "input")
+			)
+			(node
+				(ref "U9")
+				(pin "3")
+				(pinfunction "V_{SS}_3")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "4")
+			(name "ADC_SCLK")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "20")
+				(pinfunction "PA08_20")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "4")
+				(pinfunction "SCLK_4")
+				(pintype "unspecified")
+			)
+		)
+		(net
+			(code "5")
+			(name "ADC_SDI")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "16")
+				(pinfunction "PA04_16")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "6")
+				(pinfunction "SDI_6")
+				(pintype "unspecified")
+			)
+		)
+		(net
+			(code "6")
+			(name "DAC_OUT")
+			(class "Default")
+			(node
+				(ref "R14")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R2")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP2")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "8")
+				(pinfunction "VOUT_8")
+				(pintype "unspecified")
+			)
+		)
+		(net
+			(code "7")
+			(name "E0_PUMP")
+			(class "Default")
+			(node
+				(ref "R12")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R13")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP3")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "1")
+				(pinfunction "D1_1")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "8")
+			(name "E1_PUMP")
+			(class "Default")
+			(node
+				(ref "R5")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R6")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP10")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "7")
+				(pinfunction "D2_7")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "9")
+			(name "ELEC0")
+			(class "Default")
+			(node
+				(ref "C10")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "1")
+				(pinfunction "Pin_1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R16")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "10")
+			(name "ELEC0_OUT")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "8")
+				(pinfunction "PB02_8")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP11")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "11")
+				(pinfunction "IN1_11")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "11")
+			(name "ELEC0_SW")
+			(class "Default")
+			(node
+				(ref "R17")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "12")
+				(pinfunction "S1A_12")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "12")
+			(name "ELEC1")
+			(class "Default")
+			(node
+				(ref "C14")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "2")
+				(pinfunction "Pin_2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R8")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "13")
+			(name "ELEC1_OUT")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "6")
+				(pinfunction "PB04_6")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "5")
+				(pinfunction "IN2_5")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "14")
+			(name "ELEC1_SW")
+			(class "Default")
+			(node
+				(ref "R7")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U9")
+				(pin "6")
+				(pinfunction "S2A_6")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "15")
+			(name "GND")
+			(class "Default")
+			(node
+				(ref "BT1")
+				(pin "2")
+				(pinfunction "-_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C1")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C10")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C11")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C12")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C14")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C15")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C19")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C3")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C4")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C5")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C8")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C9")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D1")
+				(pin "2")
+				(pinfunction "A_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "2")
+				(pinfunction "ANT_IN_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "36")
+				(pinfunction "GND_3_36")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "4")
+				(pinfunction "GND_1_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "40")
+				(pinfunction "ANT_OUT_40")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "41")
+				(pinfunction "GND_4_41")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "42")
+				(pinfunction "GND_5_42")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "43")
+				(pinfunction "GND_6_43")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "44")
+				(pinfunction "GND_7_44")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "5")
+				(pinfunction "GND_2_5")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "3")
+				(pinfunction "Pin_3_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "4")
+				(pinfunction "Pin_4_4")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "power_in")
+			)
+			(node
+				(ref "U1")
+				(pin "4")
+				(pinfunction "SEL_4")
+				(pintype "input")
+			)
+			(node
+				(ref "U10")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "input")
+			)
+			(node
+				(ref "U10")
+				(pin "7")
+				(pinfunction "EGP_7")
+				(pintype "input")
+			)
+			(node
+				(ref "U2")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "input")
+			)
+			(node
+				(ref "U3")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "power_in")
+			)
+			(node
+				(ref "U4")
+				(pin "2")
+				(pinfunction "*LDAC_2")
+				(pintype "unspecified")
+			)
+			(node
+				(ref "U4")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "unspecified")
+			)
+			(node
+				(ref "U4")
+				(pin "9")
+				(pinfunction "EP_9")
+				(pintype "unspecified")
+			)
+			(node
+				(ref "U5")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "input")
+			)
+			(node
+				(ref "U5")
+				(pin "3")
+				(pinfunction "GND_3")
+				(pintype "input")
+			)
+			(node
+				(ref "U5")
+				(pin "7")
+				(pinfunction "EGP_7")
+				(pintype "input")
+			)
+			(node
+				(ref "U6")
+				(pin "11")
+				(pinfunction "EPAD_11")
+				(pintype "unspecified")
+			)
+			(node
+				(ref "U6")
+				(pin "5")
+				(pinfunction "DGND_5")
+				(pintype "power_in")
+			)
+			(node
+				(ref "U7")
+				(pin "2")
+				(pinfunction "GND_2")
+				(pintype "input")
+			)
+			(node
+				(ref "U9")
+				(pin "2")
+				(pinfunction "S1B_2")
+				(pintype "input")
+			)
+			(node
+				(ref "U9")
+				(pin "4")
+				(pinfunction "GND_4")
+				(pintype "input")
+			)
+			(node
+				(ref "U9")
+				(pin "8")
+				(pinfunction "S2B_8")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "16")
+			(name "LED0")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "9")
+				(pinfunction "PB01_9")
+				(pintype "passive")
+			)
+			(node
+				(ref "R1")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "17")
+			(name "MAG")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "19")
+				(pinfunction "PA07_19")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "4")
+				(pinfunction "OUT_4")
+				(pintype "output")
+			)
+		)
+		(net
+			(code "18")
+			(name "Net-(AE1-FEED)")
+			(class "Default")
+			(node
+				(ref "AE1")
+				(pin "1")
+				(pinfunction "FEED_1")
+				(pintype "input")
+			)
+			(node
+				(ref "IC2")
+				(pin "3")
+				(pinfunction "RF_2G4_3")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "19")
+			(name "Net-(BT1-+)")
+			(class "Default")
+			(node
+				(ref "BT1")
+				(pin "1")
+				(pinfunction "+_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "BT2")
+				(pin "2")
+				(pinfunction "-_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "20")
+			(name "Net-(C11-Pad1)")
+			(class "Default")
+			(node
+				(ref "C11")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R16")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R17")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "21")
+			(name "Net-(C15-Pad1)")
+			(class "Default")
+			(node
+				(ref "C15")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R7")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R8")
+				(pin "1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "22")
+			(name "Net-(D1-K)")
+			(class "Default")
+			(node
+				(ref "D1")
+				(pin "1")
+				(pinfunction "K_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R1")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "23")
+			(name "Net-(D2-A)")
+			(class "Default")
+			(node
+				(ref "C5")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "D2")
+				(pin "2")
+				(pinfunction "A_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U5")
+				(pin "4")
+				(pinfunction "V_{out}_4")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "24")
+			(name "Net-(IC2-PD00)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "27")
+				(pinfunction "PD00_27")
+				(pintype "passive")
+			)
+			(node
+				(ref "Y1")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "25")
+			(name "Net-(IC2-PD01)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "26")
+				(pinfunction "PD01_26")
+				(pintype "passive")
+			)
+			(node
+				(ref "Y1")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "26")
+			(name "Net-(U1-LX)")
+			(class "Default")
+			(node
+				(ref "L2")
+				(pin "2")
+				(pinfunction "2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U1")
+				(pin "2")
+				(pinfunction "LX_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "27")
+			(name "Net-(U6-+INA)")
+			(class "Default")
+			(node
+				(ref "R11")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R12")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "3")
+				(pinfunction "+INA_3")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "28")
+			(name "Net-(U6-+INB)")
+			(class "Default")
+			(node
+				(ref "R3")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R5")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "7")
+				(pinfunction "+INB_7")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "29")
+			(name "Net-(U6--INA)")
+			(class "Default")
+			(node
+				(ref "C7")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R14")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R15")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "2")
+				(pinfunction "-INA_2")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "30")
+			(name "Net-(U6--INB)")
+			(class "Default")
+			(node
+				(ref "C13")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R2")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R4")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "8")
+				(pinfunction "-INB_8")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "31")
+			(name "Net-(U6-OUTA)")
+			(class "Default")
+			(node
+				(ref "C7")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R13")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R15")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "1")
+				(pinfunction "OUTA_1")
+				(pintype "output")
+			)
+		)
+		(net
+			(code "32")
+			(name "Net-(U6-OUTB)")
+			(class "Default")
+			(node
+				(ref "C13")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R4")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R6")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "9")
+				(pinfunction "OUTB_9")
+				(pintype "output")
+			)
+		)
+		(net
+			(code "33")
+			(name "Net-(U7-C1+)")
+			(class "Default")
+			(node
+				(ref "C6")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "6")
+				(pinfunction "C1+_6")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "34")
+			(name "Net-(U7-C1-)")
+			(class "Default")
+			(node
+				(ref "C6")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U7")
+				(pin "5")
+				(pinfunction "C1-_5")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "35")
+			(name "PTI_DATA")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "32")
+				(pinfunction "PC04_32")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "10")
+				(pinfunction "PTI_DATA_10")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "36")
+			(name "PTI_SYNC")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "33")
+				(pinfunction "PC05_33")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "9")
+				(pinfunction "PTI_FRAME_9")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "37")
+			(name "RESET_N")
+			(class "Default")
+			(node
+				(ref "C19")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "35")
+				(pinfunction "RESETN_35")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "3")
+				(pinfunction "RESET_{N}_3")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "38")
+			(name "SHDN")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "10")
+				(pinfunction "PB00_10")
+				(pintype "passive")
+			)
+			(node
+				(ref "U6")
+				(pin "6")
+				(pinfunction "EN_6")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "39")
+			(name "SWCLK")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "12")
+				(pinfunction "PA01_12")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "8")
+				(pinfunction "SWCLK_8")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "40")
+			(name "SWDIO")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "13")
+				(pinfunction "PA02_13")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "7")
+				(pinfunction "SWDIO_7")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "41")
+			(name "SWO")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "15")
+				(pinfunction "PA03_15")
+				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "6")
+				(pinfunction "SWO_6")
+				(pintype "input")
+			)
+		)
+		(net
+			(code "42")
+			(name "VDD")
+			(class "Default")
+			(node
+				(ref "C1")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C17")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C18")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "22")
+				(pinfunction "VREGVDD_22")
+				(pintype "passive")
+			)
+			(node
+				(ref "IC2")
+				(pin "23")
+				(pinfunction "IOVDD_23")
+				(pintype "passive")
+			)
+			(node
+				(ref "TP7")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "1")
+				(pinfunction "OUT_1")
+				(pintype "input")
+			)
+			(node
+				(ref "U2")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "input")
+			)
+			(node
+				(ref "U3")
+				(pin "1")
+				(pinfunction "VCC_1")
+				(pintype "power_in")
+			)
+			(node
+				(ref "U4")
+				(pin "1")
+				(pinfunction "VDD_1")
+				(pintype "unspecified")
+			)
+		)
+		(net
+			(code "43")
+			(name "VDDA")
+			(class "Default")
+			(node
+				(ref "C18")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "D2")
+				(pin "1")
+				(pinfunction "K_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R11")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "R3")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "7")
+				(pinfunction "VREF_7")
+				(pintype "unspecified")
+			)
+		)
+		(net
+			(code "44")
+			(name "unconnected-(AE1-PCB_Trace-Pad2)")
+			(class "Default")
+			(node
+				(ref "AE1")
+				(pin "2")
+				(pinfunction "PCB_Trace_2")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "45")
+			(name "unconnected-(IC2-DECOUPLE-Pad14)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "14")
+				(pinfunction "DECOUPLE_14")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "46")
+			(name "unconnected-(IC2-NC_1-Pad1)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "1")
+				(pinfunction "NC_1_1")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "47")
+			(name "unconnected-(IC2-NC_2-Pad37)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "37")
+				(pinfunction "NC_2_37")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "48")
+			(name "unconnected-(IC2-NC_3-Pad38)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "38")
+				(pinfunction "NC_3_38")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "49")
+			(name "unconnected-(IC2-NC_4-Pad39)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "39")
+				(pinfunction "NC_4_39")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "50")
+			(name "unconnected-(IC2-PA00-Pad11)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "11")
+				(pinfunction "PA00_11")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "51")
+			(name "unconnected-(IC2-PA06-Pad18)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "18")
+				(pinfunction "PA06_18")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "52")
+			(name "unconnected-(IC2-PB03-Pad7)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "7")
+				(pinfunction "PB03_7")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "53")
+			(name "unconnected-(IC2-PC00-Pad28)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "28")
+				(pinfunction "PC00_28")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "54")
+			(name "unconnected-(IC2-PC01-Pad29)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "29")
+				(pinfunction "PC01_29")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "55")
+			(name "unconnected-(IC2-PC03-Pad31)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "31")
+				(pinfunction "PC03_31")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "56")
+			(name "unconnected-(IC2-PC06-Pad34)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "34")
+				(pinfunction "PC06_34")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "57")
+			(name "unconnected-(IC2-PD02-Pad25)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "25")
+				(pinfunction "PD02_25")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "58")
+			(name "unconnected-(IC2-PD03-Pad24)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "24")
+				(pinfunction "PD03_24")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "59")
+			(name "unconnected-(IC2-VREG-Pad21)")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "21")
+				(pinfunction "VREG_21")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "60")
+			(name "unconnected-(U2-VCOM_RX-Pad4)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "4")
+				(pinfunction "VCOM_RX_4")
+				(pintype "input+no_connect")
+			)
+		)
+		(net
+			(code "61")
+			(name "unconnected-(U2-VCOM_TX-Pad5)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "5")
+				(pinfunction "VCOM_TX_5")
+				(pintype "input+no_connect")
+			)
+		)
+		(net
+			(code "62")
+			(name "unconnected-(U3-NC-Pad3)")
+			(class "Default")
+			(node
+				(ref "U3")
+				(pin "3")
+				(pinfunction "NC_3")
+				(pintype "output+no_connect")
+			)
+		)
+		(net
+			(code "63")
+			(name "unconnected-(U3-PAD-Pad5)")
+			(class "Default")
+			(node
+				(ref "U3")
+				(pin "5")
+				(pinfunction "PAD_5")
+				(pintype "unspecified+no_connect")
+			)
+		)
+		(net
+			(code "64")
+			(name "unconnected-(U5-NC-Pad1)")
+			(class "Default")
+			(node
+				(ref "U5")
+				(pin "1")
+				(pinfunction "NC_1")
+				(pintype "input+no_connect")
+			)
+		)
+		(net
+			(code "65")
+			(name "unconnected-(U5-NC-Pad5)")
+			(class "Default")
+			(node
+				(ref "U5")
+				(pin "5")
+				(pinfunction "NC_5")
+				(pintype "input+no_connect")
+			)
+		)
+		(net
+			(code "66")
+			(name "unconnected-(U9-NC-Pad10)")
+			(class "Default")
+			(node
+				(ref "U9")
+				(pin "10")
+				(pinfunction "NC_10")
+				(pintype "input+no_connect")
+			)
+		)
+		(net
+			(code "67")
+			(name "unconnected-(U10-NC-Pad2)")
+			(class "Default")
+			(node
+				(ref "U10")
+				(pin "2")
+				(pinfunction "NC_2")
+				(pintype "input+no_connect")
+			)
+		)
+		(net
+			(code "68")
+			(name "unconnected-(U10-NC-Pad5)")
+			(class "Default")
+			(node
+				(ref "U10")
+				(pin "5")
+				(pinfunction "NC_5")
+				(pintype "input+no_connect")
+			)
+		)
+		(net
+			(code "69")
+			(name "~{ADC_SYNC}")
+			(class "Default")
+			(node
+				(ref "IC2")
+				(pin "17")
+				(pinfunction "PA05_17")
+				(pintype "passive")
+			)
+			(node
+				(ref "U4")
+				(pin "5")
+				(pinfunction "*SYNC_5")
+				(pintype "unspecified")
+			)
+		)
+	)
+)

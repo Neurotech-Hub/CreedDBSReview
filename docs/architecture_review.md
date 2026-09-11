@@ -8,7 +8,7 @@ The most useful comparison set is not “all rodent stimulators,” but specific
 
 | Device                | Mouse compatible?                        | Power / runtime                                           | Stim architecture                                             |                  Channels | Remote configurability                             | Key lesson                                                                                                    |
 | --------------------- | ---------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------------- | ------------------------: | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| **Creed v8.1**        | Yes                                      | **3.15–3.42 mA stim**, ~2 d practical                     | Constant-current Howland, ±5 V, DAC, analog switching         | ≥2 architecture-dependent | **BLE real-time**                                  | Extremely flexible, but pays mA-scale infrastructure overhead                                                 |
+| **Creed v8.1**        | Yes                                      | **3.15–3.42 mA stim**, ~2.5–3 d on 2× size-13 zinc-air (~280 mAh) | Constant-current Howland, ±5 V, DAC, analog switching; asymmetric 1:5 biphasic | 2, shared amplitude and timing | **BLE real-time**                                  | Extremely flexible, but pays mA-scale infrastructure overhead                                                 |
 | **Paulat 2026 t-IPG** | **Yes**                                  | **21.3 µA @130 Hz**, ≥49 d voltage-compliant; 0.9 g       | Constant-current asymmetric biphasic; direct 3 V              |                 2 delayed | Near-field programmer / predefined paradigms       | Demonstrates that chronic mouse DBS can live in the tens-of-µA regime                                         |
 | **Grotemeyer 2024**   | **Yes**                                  | ~20 µA, **52 d**                                          | Constant-current monophasic + passive discharge               |                         1 | Magnetic on/off; preprogrammed                     | ~20 µA is repeatable with simple circuitry                                                                    |
 | **Fleischer 2020**    | **Yes**                                  | ~20 µA, **30 d**                                          | Constant-current monophasic; charge dissipates between pulses |                         1 | Preprogrammed; reed switch                         | Similar result using two V364 cells and no active radio                                                       |
@@ -48,12 +48,12 @@ A reasonable decomposition from the present design is:
 | BLE connected overhead                           |                                                      ~0.3–0.5 mA |
 | LT6020 on ±5 V                                   |                                                      ~0.7–0.8 mA |
 | MAX1853 negative rail                            |                                                      ~0.3–0.6 mA |
-| AD5683 DAC                                       | ~0.2–0.35 mA, potentially higher if internal reference is active |
+| AD5683 DAC (external-reference part, never powered down) |                                                     ~0.2–0.35 mA |
 | Reference / misc. analog                         |                                                     ~0.05–0.1 mA |
 | Howland static currents                          |                                 unknown; potentially substantial |
 | Actual additional stimulation current, 60→400 µA |                                             **0.27 mA measured** |
 
-These estimates were already consistent with your observed ~3.4 mA total. 
+These estimates were already consistent with your observed ~3.4 mA total. One correction from the firmware: the LT6020 line is an upper bound. v8.1 asserts the amplifier's shutdown pin between pulses; the on-window is ~150 µs settle plus the stimulating phase plus a 5× recharge phase, so the duty is ~10% at 90 µs and ~50% at 600 µs, and the averaged cost is closer to 0.1–0.4 mA. The difference falls on the awake MCU and the Howland network, which makes the rail-current measurements in §7 more important, not less. 
 
 Paulat takes essentially the opposite design philosophy: direct ~3 V battery operation, a low-power microcontroller, no permanently active radio, no continuously running ±5 V precision analog system, and a specialized current-source/H-bridge designed specifically around one class of DBS waveform. Their ~21 µA current is therefore quite believable. 
 
@@ -203,7 +203,7 @@ Your existing notes already identify the right measurement points.  I would prio
 2. **+5 V rail current during stimulation**.
 3. **MAX1853 input current** independently.
 4. **LT6020 ±5 V supply current**.
-5. **DAC/reference current**, specifically confirming the AD5683 internal reference is disabled.
+5. **DAC and LT6656 reference current** (the AD5683 on the BOM is the external-reference variant; there is no internal reference to disable).
 6. Total battery current versus **load impedance**, e.g. 1, 5, 10, 20, 30, 50 kΩ.
 
 That last experiment is especially important. If typical in-vivo mouse electrodes never require more than ~2–3 V compliance—as STELLA found in its rodent preparations—then the strongest argument for the current ±5 V architecture largely disappears.

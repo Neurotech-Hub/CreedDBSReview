@@ -1,0 +1,32 @@
+\section{4. Electrical validation of the wireless stimulator}\label{electrical-validation-of-the-wireless-stimulator}
+
+\subsection{4.1 Current accuracy and pulse fidelity}\label{current-accuracy-and-pulse-fidelity}
+
+[Pending; see Working notes.]
+
+\subsection{4.2 Load tolerance and compliance}\label{load-tolerance-and-compliance}
+
+[Pending; see Working notes.]
+
+\subsection{4.3 Battery and operating duration}\label{battery-and-operating-duration}
+
+Battery current was measured at the cell terminals in each operating state with the LED heartbeat active (Table 3). The device draws 1.47 mA when idle and not advertising, 1.62 mA while advertising, 1.89 mA while connected to the application, and 3.15--3.42 mA while stimulating with 60 and 400 µA commanded, respectively, at the 130 Hz frequency setting (142.9 Hz delivered; Table 2).
+
+\textbf{Table 3.} Measured battery current and projected runtime on two size-13 zinc-air cells in series ($\sim$280 mAh; 90 \% of nameplate capacity assumed usable). Stimulation rows use the 130 Hz setting, which delivers 142.9 Hz.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash{}}p{0.4\linewidth}>{\raggedleft\arraybackslash{}}p{0.22\linewidth}>{\raggedleft\arraybackslash{}}p{0.25\linewidth}@{}}
+\toprule
+Operating state & Battery current & Projected runtime \\
+\midrule
+\endhead
+Idle, not advertising & 1.47 mA & $\sim$7.1 d \\
+Advertising & 1.62 mA & $\sim$6.5 d \\
+Connected to app & 1.89 mA & $\sim$5.6 d \\
+Stimulating, 60 µA & 3.15 mA & $\sim$3.3 d \\
+Stimulating, 400 µA & 3.42 mA & $\sim$3.1 d \\
+\bottomrule
+\end{longtable}
+
+Two features of these numbers define the usable experimental window. First, raising the commanded current from 60 to 400 µA adds only 0.27 mA at the battery: stimulation itself is a minor term, and the platform current (boost converter chain, negative rail, DAC and reference, and a microcontroller that remains awake to sequence pulses) sets the runtime. Second, even at the highest measured current a fresh pair of cells supports about three days of continuous stimulation, and more than five days of standby with the phone connected. Hours-long, overnight and multiday experiments can therefore run without disturbing the animal, and longer studies remain feasible through a brief, noninvasive battery exchange that avoids the restraint and handling a tether requires. Zinc-air cells are inexpensive and widely available, which suits a device whose cells are replaced frequently.
+
+Runtime should therefore be interpreted against the experimental protocol rather than as a binary acute-versus-chronic designation. The device can be used for chronic studies with scheduled battery exchange; it is not intended as a fully implanted, maintenance-free system operating for weeks or months. Section 7 describes why that use case requires a different architecture rather than a firmware change.

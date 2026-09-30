@@ -1,0 +1,37 @@
+% PDF-only styling. The DOCX build runs pandoc with macro expansion off
+% (latex-latex_macros), so macros defined here never reach the DOCX; keep
+% manuscript content out of this file.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{creed}
+
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{fontspec}
+\setmainfont{texgyretermes}[Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+\setmonofont{texgyrecursor}[Extension=.otf, UprightFont=*-regular,
+  BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{parskip}
+\RequirePackage{microtype}
+\RequirePackage{graphicx}
+\RequirePackage{longtable,booktabs,array}
+\RequirePackage{pdflscape}
+\RequirePackage{xcolor}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{xurl}
+
+\setcounter{secnumdepth}{-1} % headings carry their own numbers ("1. Introduction")
+\setlength{\emergencystretch}{3em}
+
+\RequirePackage[authoryear,round]{natbib}
+\setlength{\bibsep}{3pt}
+
+\gdef\@subtitle{}
+\providecommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\LARGE\bfseries \@title\par}
+    \ifx\@subtitle\@empty\else\vspace{0.5em}{\large \@subtitle\par}\fi
+  \end{center}\vspace{1em}}
+
+\endinput

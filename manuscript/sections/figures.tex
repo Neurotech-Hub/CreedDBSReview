@@ -1,0 +1,35 @@
+\section{Figures}\label{figures}
+
+% Each minipage keeps a legend on the same page as its image in the PDF.
+\noindent\begin{minipage}{\linewidth}
+\textbf{Figure 1. FLEX-DBS architecture.} Functional blocks common to constant-current rodent stimulators, as implemented in FLEX-DBS. Zinc-air cells feed a boost converter that generates the +5 V rail; an inverter derives −5 V, and a regulator derives 3.3 V for the BLE microcontroller. The microcontroller sets pulse timing, commands amplitude through a reference and DAC, and controls the output switches. The DAC drives two Howland current pumps on ±5 V, one per hemisphere, whose outputs pass through the switches and output filters to bilateral electrodes with a common return. A Hall-effect sensor wakes the device when a magnet is passed over it, and parameters are set from an iOS application over BLE. Components are listed in Table 1.
+
+\begin{center}
+\includegraphics[width=4.5in,height=0.6\textheight,keepaspectratio]{figures/fig1_architecture.png}
+\end{center}
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Figure 2. FLEX-DBS hardware.} \emph{(A)} Assembled device viewed from above; scale bar, 10 mm. P, break-away programming tab carrying the Tag-Connect TC2050 footprint, which can be cut off after firmware is loaded. \emph{(B)} Rendering of the device from below with the snap-on shroud, showing the two zinc-air cell holders and the electrode connector. The board measures 19.5 mm × 22.5 mm excluding the programming tab, and the assembled device is 8.72 mm thick.
+
+\begin{center}
+\includegraphics[width=2.9in,height=2.6in,keepaspectratio]{figures/FLEX-DBS_deviceScale.jpg}
+\includegraphics[width=2.9in,height=2.6in,keepaspectratio]{figures/FLEX-DBS_3D_render.png}
+\end{center}
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Figure 3. MouseCap iOS application.} \emph{(Left)} Continuous mode: amplitude (percent of full scale and nominal current into 1 kΩ), pulse duration and frequency sliders; device ID, firmware version and battery indicator; activation toggle, Sync, LED and Read controls. \emph{(Right)} Burst mode: burst period, intra-burst frequency and burst duration with unit selection. Representative settings are shown (50 \%, 90 µs, 130 Hz; 30 s burst period, 10 s burst duration). With firmware v0.5, the 90 µs and 130 Hz settings deliver a $\sim$117 µs stimulating phase at 142.9 Hz (Table 2).
+
+\begin{center}
+\includegraphics[width=5.5in]{figures/FLEX-DBS_iPhoneRenders.png}
+\end{center}
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Figure 4. In-vivo electrode impedance and the compliance envelope.} \emph{(A)} Impedance of one implanted platinum electrode per mouse from 1 to 5 weeks after implantation, measured with 10 µA, 450 µs pulses (mean of five readings per session; Section 3.2). \emph{(B)} Largest regulated current as a function of load impedance for FLEX-DBS, $I_\mathrm{max} = 4.9\ \mathrm{V} / (|Z| + 2.66\ \mathrm{k}\Omega)$ (solid), and for an illustrative battery-direct stimulator with $\sim$3 V of compliance (dashed). Points mark the measured impedances from (A) on the FLEX-DBS curve; the dotted line marks the 100 µA reference protocol.
+
+\begin{center}
+\includegraphics[width=\linewidth]{figures/fig4_impedance.png}
+\end{center}
+\end{minipage}

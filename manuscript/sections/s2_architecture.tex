@@ -1,0 +1,93 @@
+\section{2. System architecture and implementation}\label{system-architecture-and-implementation}
+
+\subsection{2.1 General DBS architecture}\label{general-dbs-architecture}
+
+Figure 1 presents the stimulator as a set of functional blocks. Every implanted or head-mounted constant-current stimulator contains the same eight elements, and the design space is defined by how each is implemented:
+
+\begin{enumerate}
+\item \textbf{Energy source.} Primary or rechargeable cells; the cell chemistry sets the rail voltage and the usable capacity.
+\item \textbf{Power conditioning and compliance-voltage generation.} Either the battery drives the output stage directly (compliance limited to the cell voltage, typically $\sim$3 V) or a converter generates higher and/or negative rails.
+\item \textbf{Stimulation timing and waveform generation.} A microcontroller timer, a dedicated hardware sequencer, or an analog oscillator; the choice sets timing resolution and the processor duty cycle.
+\item \textbf{Current regulation.} A programmable current source (Howland pump, current-mirror DAC, or a resistor-defined source), or a constant-voltage output with no regulation.
+\item \textbf{Polarity and output routing.} Switches or an H-bridge that direct the regulated current to one or more electrodes and, for biphasic stimulation, reverse it.
+\item \textbf{Charge recovery.} Active reversal of current (symmetric or asymmetric), passive electrode shorting, or none.
+\item \textbf{Supervisory logic.} The microcontroller that stores parameters, sequences the pulse, and monitors the battery.
+\item \textbf{Wireless control and telemetry.} A radio for real-time control, a near-field or magnetic interface for occasional reprogramming, or none.
+\end{enumerate}
+
+The same block diagram exposes the principal trade-offs: battery-direct versus boosted rails, constant-current versus constant-voltage stimulation, single versus split supplies, active versus passive charge recovery, real-time wireless control versus autonomous operation, and experimental flexibility versus power optimization for long-term implantation. Each published rodent stimulator in Section 5 can be placed on this diagram by naming its choice for each block.
+
+\subsection{2.2 FLEX-DBS implementation}\label{flex-dbs-implementation}
+
+FLEX-DBS implements the general architecture with the choices listed in Table 1. The circuit schematic is provided as Supplementary material S1, and the firmware, application and communication protocol are released as open source (S2--S4); the main text describes function.
+
+\textbf{Table 1.} FLEX-DBS implementation of each architectural block.
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash{}}p{0.3\linewidth}>{\raggedright\arraybackslash{}}p{0.65\linewidth}@{}}
+\toprule
+Block & FLEX-DBS implementation \\
+\midrule
+\endhead
+Energy source & Two size-13 (PR48) zinc-air cells in series: 2.8 V nominal, $\sim$280 mAh \\
+Power conditioning & MAX17220 boost converter to +5 V; MAX1853 charge-pump inverter to −5 V; TPS709 LDO from +5 V to 3.3 V for logic \\
+Timing and waveform & BGM220S microcontroller; pulse edges from a 32.768 kHz low-frequency timer; amplitude from a 16-bit DAC (AD5683) referenced to a 1.25 V precision reference (LT6656) \\
+Current regulation & Two improved Howland current pumps (LT6020-1 dual precision op amp) on ±5 V, one per hemisphere, sharing one DAC command \\
+Polarity and routing & ADG1236 dual SPDT analog switch: each pump output either to its electrode or to ground; polarity reversal by stepping the DAC across the 1.25 V reference \\
+Charge recovery & Active, asymmetric: reverse-polarity phase at one-fifth amplitude for five times the pulse width \\
+Supervisory logic & Same BGM220S; parameters held in non-volatile memory; battery voltage measured by the on-chip ADC \\
+Wireless & BLE 5 with a custom text protocol; iOS application (MouseCap) for configuration; Hall-effect sensor (DRV5032) for magnet wake \\
+\bottomrule
+\end{longtable}
+
+\textbf{Power tree.} The two zinc-air cells feed the boost converter, which generates the +5 V rail. The negative rail is derived from +5 V by a charge-pump inverter that is enabled whenever +5 V is present. Logic runs from a 3.3 V linear regulator fed by +5 V. The output stage therefore has a 10 V supply span, and every subsystem, including the microcontroller and radio, sits downstream of the boost converter. This choice prioritizes compliance and precision over the quiescent-current constraints of a fully implanted, long-duration system (Section 7).
+
+\textbf{Current source.} The 1.25 V reference serves as the analog mid-rail and as the external reference of the 16-bit DAC (external-reference variant, gain 2), so the DAC output spans 0--2.5 V centered on 1.25 V. Each Howland pump uses matched 10 kΩ input and feedback resistors on its inverting side and a 12 kΩ reference resistor balanced against a 10 kΩ resistor plus a 2 kΩ sense resistor on its non-inverting side, which satisfies the balance condition of the improved Howland topology \citep{ti2008howland}. All network resistors are 0.1 \% tolerance. At the reference voltage the commanded current is zero; stepping the DAC below the reference produces one polarity and stepping above it produces the other. The ideal transconductance is set by the 2 kΩ sense resistor, 0.5 mA/V, or 6.25 µA per percent of full scale (625 µA at 100 \%). The application labels amplitude as a percentage and as the nominal current into a 1 kΩ load, $\sim$6 µA per percent (300 µA at 50 \% and 600 µA at 100 \%). Calibration of the delivered current is described in Section 4.1.
+
+\textbf{Channels.} The device has two output channels, one per hemisphere, each with its own Howland pump, switch and two-stage output filter (two 330 Ω series resistors, each followed by 470 pF to ground; 660 Ω in total per channel). The two channels share the DAC command, so they deliver the same amplitude and, in the current firmware, the same timing: both switches close and open together and both pumps see the same DAC steps. Independent timing per channel is possible with the existing hardware because each switch has its own control line; independent amplitude is not, because the DAC is shared. The four-pin electrode connector carries the two channel outputs and the ground return.
+
+\textbf{Pulse generation.} Each pulse is sequenced by the microcontroller as a fixed chain: the op amp is brought out of shutdown and allowed 150 µs to settle with the DAC at the zero-current reference; the switches then connect both pumps to their electrodes and are allowed 30 µs; the DAC steps to the commanded amplitude \emph{I} for the programmed pulse width \emph{P}; the DAC steps to the opposite polarity at \emph{I}/5 for 5·\emph{P}; the DAC returns to the reference; the switches disconnect the electrodes; and the op amp is shut down. Switches change state only at zero commanded current, so the load is never connected to a saturated open-circuit current source and never disconnected mid-pulse, and pulse edges are produced by DAC steps into an already-connected load. The reversed phase carries the same charge as the stimulating phase, so each pulse is charge-balanced by construction. Because the op amp is enabled only around each pulse, its on-time is roughly 210 µs + 6·\emph{P}, about 10 \% of the period for a 90 µs setting at 130 Hz and up to about 50 \% at 600 µs.
+
+Pulse and inter-pulse timing derive from the 32.768 kHz low-frequency timer, so every duration is quantized to one 30.5 µs tick. Interrupt latency, tick quantization and the DAC write add a fixed $\sim$117 µs to each stimulating phase, which the firmware subtracts from the programmed pulse width; settings of 117 µs or less therefore produce a stimulating phase of $\sim$117 µs rather than the programmed value. The stimulation period is set by a periodic timer whose period is computed in whole milliseconds, rounded down, so the delivered frequency takes one of seven values between 83.3 and 166.7 Hz (Table 2). The 130 Hz setting used throughout this work delivers 142.9 Hz; 100 and 125 Hz are delivered exactly. In burst mode a second periodic timer starts a train of pulses at the intra-burst frequency every burst period and stops scheduling new pulses at the end of the burst duration. The first pulse of each burst occurs one intra-burst period after burst onset, and a pulse already in progress when the burst ends completes its full charge-balanced chain rather than being truncated.
+
+\textbf{Parameters.} Table 2 lists the parameters exposed by the application and what the hardware and firmware v0.5 deliver for each. Parameters are stored in the microcontroller's non-volatile memory and survive power cycling, so a device configured in the laboratory delivers the same protocol after its cells are replaced in the behavior room or home cage.
+
+\textbf{Table 2.} Programmable stimulation parameters: application settings and delivered values (firmware v0.5).
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash{}}p{0.17\linewidth}>{\raggedright\arraybackslash{}}p{0.25\linewidth}>{\raggedright\arraybackslash{}}p{0.31\linewidth}>{\raggedright\arraybackslash{}}p{0.19\linewidth}@{}}
+\toprule
+Parameter & App setting & Delivered & Notes \\
+\midrule
+\endhead
+Amplitude & 0--100 \% in 1 \% steps; labeled 0--600 µA into 1 kΩ & 16-bit DAC; ideal transconductance 6.25 µA per percent (0--625 µA), limited by compliance at high load (Section 3.3) & Shared by both channels \\
+Pulse width \emph{P} & 90--600 µs in 30 µs steps & $\sim$120--600 µs, quantized to 30.5 µs; settings of 117 µs or less deliver $\sim$117 µs & Recovery phase is 5·\emph{P} at \emph{I}/5 \\
+Frequency (continuous mode) & 80--160 Hz in 5 Hz steps & Period in whole milliseconds, rounded down: 83.3, 90.9, 100, 111.1, 125, 142.9 or 166.7 Hz & 130 Hz setting delivers 142.9 Hz \\
+Burst period & 1 ms -- 60 min & As set & Burst mode only \\
+Intra-burst frequency & 80--160 Hz in 5 Hz steps & Same seven values as continuous mode & Burst mode only \\
+Burst duration & 1 ms -- 120 s & Capped at the burst period; about duration ÷ intra-burst period pulses per burst & Burst mode only; in-flight pulse completes \\
+Device ID & 00--99 & --- & Displayed in the app for multi-animal cohorts \\
+\bottomrule
+\end{longtable}
+
+\textbf{Wireless control and user interface.} The device advertises as a BLE peripheral at a 2 s interval and exposes one service with a write characteristic (app to device) and a notify characteristic (device to app). Commands and responses are short ASCII strings of comma-separated key--value pairs; for example, \texttt{\_M0,A50,F130,P90,G0,N0} sets continuous mode, 50 \% amplitude, a 130 Hz frequency setting, a 90 µs pulse-width setting, activation off and device number 0. The device replies with its full configuration, battery voltage and firmware version. The negotiated ATT MTU (up to 247 bytes) allows a complete configuration in a single packet. The iOS application (Figure 3) presents amplitude, pulse width and frequency as sliders with the derived current shown alongside, a segmented control for continuous versus burst mode, and a toggle that starts the stimulation protocol. A red outline on the Sync button indicates that on-screen values differ from those confirmed by the device.
+
+The intended workflow is configure-then-run: the experimenter connects, sets parameters, arms activation and disconnects; the device begins stimulating and stops advertising. Stimulation continues autonomously with no radio link. Passing a magnet over the device's Hall-effect sensor re-enables advertising so the phone can reconnect to inspect battery voltage, change parameters or stop stimulation without handling the animal. A status LED indicates device state.
+
+\textbf{Battery telemetry.} The microcontroller samples the battery voltage on request and reports it in millivolts; the application maps 1.4--2.8 V to a 0--100 \% indicator.
+
+\textbf{Physical design.} The circuit is built on a 1 mm thick printed circuit board measuring 19.5 mm × 22.5 mm, excluding the programming tab, and the assembled device is 8.72 mm thick (Figure 2). Firmware is loaded through a Tag-Connect TC2050 footprint on a break-away programming tab (Figure 2A, P), which can be cut off once firmware is loaded. Silicon Labs over-the-air device firmware update (DFU) is not currently enabled but could be added to allow firmware updates without the tab. A custom snap-on shroud covers the device (Figure 2B). The shroud was designed in Fusion 360 (Autodesk; design available at \url{https://a360.co/3TqHAxf}) and printed in PLA on a Bambu Lab X1 Carbon printer.
+
+\subsection{2.3 Design considerations}\label{design-considerations}
+
+The architecture follows from a set of coupled experimental requirements rather than from a single optimum.
+
+\textbf{Stimulation envelope.} Parameter ranges were chosen to reproduce protocols with established behavioral effects in our prior rodent DBS work rather than from theoretical models of neural activation. Stimulation at 100 µA, 90 µs and 130 Hz \citep{creed2012egr} is the reference protocol around which the application's defaults are written. The frequency range covers the 130 Hz clinical standard and the 80--160 Hz window in which most rodent high-frequency protocols fall; it does not extend to the 30 and 60 Hz conditions used in earlier comparative work \citep{creed2011}, a limitation taken up in Section 7. Amplitude is programmable in $\sim$6 µA steps to 600 µA nominal, which covers the 100 µA protocols above and the several-hundred-microampere range used in behavioral studies \citep{aleksandrova2013,creed2013}. Firmware v0.5 does not yet deliver the reference protocol exactly: the 90 µs setting produces a $\sim$117 µs stimulating phase and the 130 Hz setting produces 142.9 Hz (Table 2). Both are firmware limitations with straightforward fixes (Section 7).
+
+\textbf{Compliance and electrode impedance.} A constant-current source needs an output voltage of $I\cdot|Z|$ plus headroom for the sense resistor, the output filter and the amplifier's swing limit. With ±5 V rails, a 2 kΩ sense resistor and 660 Ω of series filter resistance per channel, the voltage available at the electrode is approximately ±4.6 V at 100 µA and ±3.9 V at 400 µA (derived from the schematic). Section 3 shows that the implanted electrodes used here present 37--80 kΩ in vivo, so compliance rather than the programmable range sets the largest current that can be delivered. A battery-direct design with $\sim$3 V of compliance would support substantially less current into the same electrodes; this is the principal reason that the present flexible, multiday platform and a power-optimized fully implanted derivative require different architectures.
+
+\textbf{Waveform and charge balance.} Reversing the current through the electrode after each stimulating phase prevents net charge accumulation at the electrode--tissue interface and limits the generation of harmful electrochemical reaction products \citep{merrill2005}. FLEX-DBS does this actively but asymmetrically: the recovery phase is one-fifth the amplitude for five times the duration. Compared with a symmetric biphasic pulse, the low-amplitude recovery phase is less likely to be excitatory itself and avoids a sharp reversal transient; compared with passive electrode shorting, it recovers charge in a defined time regardless of the electrode's RC time constant. The ratio is fixed in firmware.
+
+\textbf{Bilateral operation.} Bilateral stimulation is standard in our behavioral protocols \citep{aleksandrova2013} and is required to reproduce them. The shared-DAC design halves the analog cost of a second channel and guarantees identical amplitude in both hemispheres. It cannot deliver different amplitudes to the two sides; that would require a second DAC or time-multiplexing of the existing one.
+
+\textbf{Wireless interaction.} Real-time control from a phone removes the tether without removing the experimenter's ability to intervene. In the configure-then-run model the radio is not part of the stimulation path, so a dropped connection does not interrupt stimulation. The advertising interval, connection behavior and text protocol were chosen for reliability and ease of debugging rather than power.
+
+\textbf{Operating duration versus long-term implant power budget.} The measured platform current (Section 4.3) is dominated by the boost converter chain, the negative rail and the awake microcontroller rather than by stimulation itself. The design accepts this overhead to provide compliance, precision and reconfigurability. A fully implanted, long-duration derivative would instead treat quiescent current, rail generation, charge-recovery method and radio duty cycle as the primary constraints, and would point toward a battery-direct, hardware-timed design with an average current roughly two orders of magnitude lower (Section 7).

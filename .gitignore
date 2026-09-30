@@ -10,8 +10,6 @@
 *.swp
 *~
 
-# Manuscript build output
-manuscript/build/
 manuscript/.venv/
 
 # Exceeds GitHub's 100 MB file limit

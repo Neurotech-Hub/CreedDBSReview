@@ -10,6 +10,11 @@
 *.swp
 *~
 
+manuscript/.venv/
+
+# Exceeds GitHub's 100 MB file limit
+manuscript/figures/01-Free-iPhone-15-Pro-Mockup.psd
+
 # Logs and scratch
 *.log
 .tmp/

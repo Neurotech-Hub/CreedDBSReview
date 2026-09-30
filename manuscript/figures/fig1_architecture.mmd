@@ -1,47 +1,43 @@
 %%{init: {"theme": "neutral", "flowchart": {"curve": "basis", "nodeSpacing": 30, "rankSpacing": 40}}}%%
 flowchart TB
   subgraph energy [Energy source]
-    Cells["2x zinc-air size 13, series<br/>2.8 V, ~280 mAh"]
+    Cells["Zinc-air cells"]
   end
 
   subgraph power [Power conditioning and compliance rails]
-    Boost["MAX17220 boost<br/>+5 V"]
-    Inv["MAX1853 inverter<br/>-5 V"]
-    LDO["TPS709 LDO<br/>3.3 V"]
+    Boost["Boost converter<br/>+5 V"]
+    Inv["Inverter<br/>-5 V"]
+    LDO["Regulator<br/>3.3 V"]
   end
 
   subgraph control [Supervisory logic and wireless]
-    MCU["BGM220S<br/>BLE 5 + timing"]
-    Mag["DRV5032<br/>magnet wake"]
-    LED["Status LED"]
+    MCU["BLE microcontroller<br/>timing and control"]
+    Mag["Magnet wake sensor"]
   end
 
   subgraph analog [Waveform, current regulation, routing]
-    Ref["LT6656<br/>1.25 V reference"]
-    DAC["AD5683 DAC<br/>amplitude"]
-    Howland["LT6020-1 dual<br/>Howland current pumps"]
-    Sw["ADG1236<br/>dual SPDT switch"]
-    Filt["330 R / 470 pF<br/>output filters"]
+    DAC["Reference and DAC<br/>amplitude"]
+    Howland["Howland current pumps<br/>one per hemisphere"]
+    Sw["Output switches"]
+    Filt["Output filters"]
   end
 
   subgraph electrode [Electrode interface]
-    Elec["Bilateral twisted-pair<br/>electrodes, common return"]
+    Elec["Bilateral electrodes<br/>common return"]
   end
 
-  App["MouseCap iOS app<br/>custom BLE protocol"]
+  App["iOS app"]
 
   Cells --> Boost
   Boost --> Inv
   Boost --> LDO
   LDO --> MCU
   Mag --> MCU
-  MCU --> LED
-  Ref --> DAC
-  MCU -->|SPI| DAC
+  MCU --> DAC
   DAC --> Howland
   Boost --> Howland
   Inv --> Howland
-  MCU -->|"SHDN, ELEC0/1"| Sw
+  MCU --> Sw
   Howland --> Sw
   Sw --> Filt
   Filt --> Elec

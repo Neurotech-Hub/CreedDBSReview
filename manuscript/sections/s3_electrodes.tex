@@ -1,0 +1,21 @@
+\section{3. Electrode impedance and stimulation robustness}\label{electrode-impedance-and-stimulation-robustness}
+
+Electrode characterization is part of the methods contribution because a constant-current stimulator cannot be evaluated independently of the load it drives.
+
+\subsection{3.1 Electrode construction}\label{electrode-construction}
+
+[Pending; see Working notes.]
+
+\subsection{3.2 In-vivo impedance measurement}\label{in-vivo-impedance-measurement}
+
+Platinum electrodes were implanted bilaterally in two mice (mouse 1 and mouse 2), and impedance was measured weekly from 1 to 5 weeks after implantation. At each session a StimJim stimulator \citep{cermak2019} delivered 10 µA, 450 µs pulses at 130 Hz for 10 s through each electrode against the common return, and the pulse voltage and delivered current reported by the StimJim were recorded five times. Impedance was computed as voltage divided by delivered current and averaged over the five readings. This two-electrode configuration is the one the stimulator itself drives, and two- and three-electrode impedance measurements are highly correlated \citep{koo2018}. This pulse-based estimate matches the quantity that matters for a constant-current stimulator, the voltage required per unit of delivered current, rather than a small-signal impedance at a single frequency.
+
+We report one electrode per animal (output 1). The other electrode of mouse 1 read near 0 V at every session, consistent with a short to the return, so output 0 was not analyzed.
+
+Two properties of the measurement bound its interpretation. First, in a bench check against resistive loads, the voltage reported by the StimJim fell 6--73 \% below the oscilloscope-measured voltage for loads of 2--68 kΩ, with the largest errors above 10 kΩ; the in-vivo values may therefore underestimate the true load. Second, the 450 µs measurement pulse is longer than typical DBS pulses, so the polarization it includes overstates the voltage needed for shorter pulses. The values below are best treated as an estimate of the load range rather than a calibrated impedance.
+
+\subsection{3.3 In-vivo impedance and the compliance envelope}\label{in-vivo-impedance-and-the-compliance-envelope}
+
+Measured impedances ranged from 37 to 80 kΩ over the five weeks (Figure 4A). The electrode in mouse 1 was stable at 37--49 kΩ (mean 43.9 ± 4.7 kΩ, mean ± SD across weeks), and the electrode in mouse 2 ranged from 54 to 80 kΩ (66.0 ± 11.0 kΩ), peaking at 3 weeks and falling to 60 kΩ by 5 weeks. Impedance therefore differed by about 1.5-fold between animals and varied by up to 1.5-fold within one animal over time.
+
+These loads place FLEX-DBS in its compliance-limited regime. With an amplifier swing of about 4.9 V and 2.66 kΩ of sense and filter resistance in series with the electrode, the largest regulated current is approximately $I_\mathrm{max} = 4.9\ \mathrm{V} / (|Z| + 2.66\ \mathrm{k}\Omega)$ (Figure 4B). For the measured electrodes this corresponds to 95--123 µA in mouse 1 and 59--86 µA in mouse 2, compared with the 600 µA nominal range of the application. The 100 µA reference protocol was therefore within compliance for mouse 1 in three of five weeks and was not for mouse 2 at any time point. A battery-direct design with $\sim$3 V of compliance would reach only $\sim$38--81 µA into the same loads. The usable amplitude is set by electrode impedance and compliance together, not by the programmable range, and it changes as the electrode--tissue interface matures.

@@ -1,0 +1,29 @@
+% FLEX-DBS manuscript. Build with `make` (see README.md in this folder).
+% The same source feeds both the PDF (tectonic) and the DOCX (pandoc), so keep
+% the body to plain LaTeX that pandoc can read: sections, lists, longtable,
+% \includegraphics, \emph/\textbf, inline math. PDF styling lives in creed.sty.
+\documentclass[11pt]{article}
+\usepackage{creed}
+
+\title{FLEX-DBS: a flexible wireless platform for bilateral constant-current deep brain stimulation in freely moving rodents}
+\date{}
+
+\begin{document}
+\maketitle
+
+\input{sections/front_matter}
+\input{sections/abstract}
+\input{sections/s1_introduction}
+\input{sections/s2_architecture}
+\input{sections/s3_electrodes}
+\input{sections/s4_validation}
+\input{sections/s5_comparison}
+\input{sections/s6_in_vivo}
+\input{sections/s7_discussion}
+\input{sections/figures}
+\input{sections/supplementary}
+\input{sections/back_matter}
+\input{sections/working_notes}
+\input{sections/references}
+
+\end{document}

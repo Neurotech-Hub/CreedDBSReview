@@ -2,22 +2,30 @@
 #   make          PDF and DOCX into build/
 #   make pdf      PDF only (tectonic; BibTeX with elsarticle-harv)
 #   make docx     DOCX only (pandoc, styled by templates/reference.docx, citations by citeproc)
-#   make figures  regenerate the Mermaid diagram, the impedance plot and the bench plot
+#   make notes    working notes as a separate PDF (notes.tex)
+#   make figures  regenerate the impedance plot and the bench plot (Figure 1 is a static image)
 #   make watch    rebuild the PDF whenever a source file changes
 #   make clean    remove build/
 
 NAME    := flex_dbs
 BUILD   := build
-SOURCES := main.tex creed.sty refs.bib $(wildcard sections/*.tex) $(wildcard figures/*.png figures/*.jpg)
+SOURCES := main.tex creed.sty refs.bib $(filter-out sections/working_notes.tex,$(wildcard sections/*.tex)) $(wildcard figures/*.png figures/*.jpg)
 CSL     := templates/elsevier-harvard.csl
 VENV    := .venv
 
-.PHONY: all pdf docx figures watch clean
+.PHONY: all pdf docx notes figures watch clean
 
-all: pdf docx
+all: pdf docx notes
 
 pdf: $(BUILD)/$(NAME).pdf
 docx: $(BUILD)/$(NAME).docx
+notes: $(BUILD)/$(NAME)_notes.pdf
+
+$(BUILD)/$(NAME)_notes.pdf: notes.tex sections/working_notes.tex sections/references.tex creed.sty refs.bib
+	@mkdir -p $(BUILD)
+	tectonic --outdir $(BUILD) notes.tex
+	@mv $(BUILD)/notes.pdf $@
+	@echo "Wrote $@"
 
 $(BUILD)/$(NAME).pdf: $(SOURCES)
 	@mkdir -p $(BUILD)
@@ -35,10 +43,7 @@ $(BUILD)/$(NAME).docx: $(SOURCES) templates/reference.docx $(CSL)
 		--output $@
 	@echo "Wrote $@"
 
-figures: figures/fig1_architecture.png figures/fig4_impedance.png figures/fig5_bench.png
-
-figures/fig1_architecture.png: figures/fig1_architecture.mmd
-	npx -y @mermaid-js/mermaid-cli@11 -i $< -o $@ -s 3 -b white
+figures: figures/fig4_impedance.png figures/fig5_bench.png
 
 figures/fig4_impedance.png: figures/scripts/fig_impedance.py ../data/impedance/mousehatImpedance.xlsx | $(VENV)
 	$(VENV)/bin/python $<

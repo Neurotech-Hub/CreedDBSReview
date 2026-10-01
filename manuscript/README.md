@@ -3,18 +3,18 @@
 LaTeX source for the FLEX-DBS paper. One source builds both a PDF and a Word document.
 
 ```sh
-make          # build/flex_dbs.pdf and build/flex_dbs.docx
+make          # build/flex_dbs.pdf, build/flex_dbs.docx and build/flex_dbs_notes.pdf
 make pdf      # PDF only
 make docx     # DOCX only
-make figures  # regenerate figures/fig1_architecture.png and figures/fig4_impedance.png
+make notes    # working notes only (build/flex_dbs_notes.pdf)
+make figures  # regenerate figures/fig4_impedance.png and fig5_bench.png
 make watch    # rebuild the PDF on every save (needs: brew install fswatch)
 make clean
 ```
 
 Requires [Tectonic](https://tectonic-typesetting.github.io/) and [pandoc](https://pandoc.org/)
 (`brew install tectonic pandoc`). Tectonic downloads the LaTeX packages it needs on first run.
-`make figures` also needs Node (for `npx @mermaid-js/mermaid-cli`) and Python 3; the first run
-creates `.venv/` with matplotlib.
+`make figures` also needs Python 3; the first run creates `.venv/` with matplotlib.
 
 ## Layout
 
@@ -22,12 +22,16 @@ creates `.venv/` with matplotlib.
 |---|---|
 | `main.tex` | Title block and the order of sections |
 | `sections/*.tex` | One file per section; edit these |
-| `sections/working_notes.tex` | Open items and pending data; remove before submission |
+| `notes.tex` | Standalone document for the working notes |
+| `sections/working_notes.tex` | Open items and pending data for the preprint; built only into the notes PDF, not the manuscript |
+| `future_revisions.md` | Items deferred beyond the preprint; not built |
 | `refs.bib` | Bibliography |
 | `creed.sty` | PDF-only styling (fonts, margins, title format, natbib) |
 | `figures/` | Images referenced by `sections/figures.tex` |
-| `figures/fig1_architecture.mmd` | Mermaid source for Figure 1 |
+| `figures/fig1_architecture.png` | Figure 1, edited directly (not generated) |
+| `figures/fig1_architecture.mmd` | Earlier Mermaid draft of Figure 1, kept for reference; not built |
 | `figures/scripts/fig_impedance.py` | Builds Figure 4 from `../data/impedance/mousehatImpedance.xlsx` |
+| `figures/scripts/fig_bench.py` | Builds Figure 5 from `../data/bench/*.jls` |
 | `supplements/` | Supplementary files (schematic) |
 | `templates/reference.docx` | Word styles applied to the DOCX (copied from `creed_v81_draft.docx`) |
 | `templates/elsevier-harvard.csl` | Citation style for the DOCX |

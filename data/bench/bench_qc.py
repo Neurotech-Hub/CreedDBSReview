@@ -1,9 +1,10 @@
-"""QC of Joulescope JS220 bench recordings of the FLEX-DBS output into 1 kOhm.
+"""QC of Joulescope JS220 bench recordings of the FLEX-DBS output into a resistive load.
 
-Usage: python bench_qc.py flexdbs_<pct>p_<pw>us_<f>Hz_<datetime>.jls [more.jls ...]
+Usage: python bench_qc.py flexdbs_<pct>p_<pw>us_<f>Hz_<load>k_<datetime>.jls [more.jls ...]
 Writes <name>_qc.png next to each input and prints raw and filtered metrics.
+The load is read from the <load>k token (e.g. 1k, 47k); files without it are 1 kOhm.
 
-Voltage across the 1 kOhm load is the primary measurement. The current channel
+Voltage across the load is the primary measurement. The current channel
 shows 2-9 sample (4-18 us) spikes starting 45-60 us after each voltage edge,
 consistent with the meter's range switching. Both channels get the same
 median filter: it removes impulses shorter than half the window but passes
@@ -22,7 +23,6 @@ import numpy as np
 from pyjls import Reader
 from scipy.ndimage import median_filter
 
-R_LOAD = 1000.0
 MEDIAN_US = 38  # 19 samples at 500 kHz; removes impulses up to 9 samples
 
 
@@ -55,7 +55,7 @@ def snippets(x, on, pre, win):
     return np.array([x[k - pre:k + win] for k in on[1:-1]])
 
 
-def metrics(i, v, on, fs, pw_us):
+def metrics(i, v, on, fs, pw_us, r_load):
     pre = int(0.3e-3 * fs)
     win = int((6 * pw_us * 1e-6 + 0.8e-3) * fs)
     ts = np.arange(-pre, win) / fs * 1e6
@@ -70,23 +70,23 @@ def metrics(i, v, on, fs, pw_us):
     return dict(
         f_hz=fs / np.diff(on).mean(),
         i1=np.median(med_i[ph1]) * 1e6, i2=np.median(med_i[ph2]) * 1e6,
-        v1=v1 * 1e3, v2=v2 * 1e3,
+        v1=v1 / r_load * 1e6, v2=v2 / r_load * 1e6,
         w1=pos.sum() / fs * 1e6, w2=neg.sum() / fs * 1e6,
-        q1=med_v[pos].sum() / fs / R_LOAD * 1e9, q2=med_v[neg].sum() / fs / R_LOAD * 1e9,
-        q_net=full.sum(axis=1).mean() / fs / R_LOAD * 1e9,
+        q1=med_v[pos].sum() / fs / r_load * 1e9, q2=med_v[neg].sum() / fs / r_load * 1e9,
+        q_net=full.sum(axis=1).mean() / fs / r_load * 1e9,
         jitter=np.std(np.diff(on)) / fs * 1e6,
         ts=ts, med_i=med_i, med_v=med_v,
     )
 
 
-def report(name, pct, pw_us, f_hz, raw, flt):
+def report(name, pct, pw_us, f_hz, rk, raw, flt):
     rows = [
         ("Frequency (Hz)", "f_hz", f"{f_hz}"),
         ("Period jitter SD (µs)", "jitter", ""),
         ("Phase 1, current channel (µA)", "i1", f"{6 * pct}"),
-        ("Phase 1, V / 1 kΩ (µA)", "v1", f"{6 * pct}"),
+        (f"Phase 1, V / {rk} kΩ (µA)", "v1", f"{6 * pct}"),
         ("Phase 2, current channel (µA)", "i2", f"{-6 * pct / 5:.0f}"),
-        ("Phase 2, V / 1 kΩ (µA)", "v2", f"{-6 * pct / 5:.0f}"),
+        (f"Phase 2, V / {rk} kΩ (µA)", "v2", f"{-6 * pct / 5:.0f}"),
         ("Phase 1 width (µs)", "w1", f"{pw_us}"),
         ("Phase 2 width (µs)", "w2", f"{5 * pw_us}"),
         ("Phase 1 charge (nC)", "q1", ""),
@@ -104,13 +104,16 @@ def report(name, pct, pw_us, f_hz, raw, flt):
 
 def qc(path):
     path = Path(path)
-    pct, pw_us, f_hz = (int(g) for g in re.match(r"flexdbs_(\d+)p_(\d+)us_(\d+)Hz", path.name).groups())
+    m = re.match(r"flexdbs_(\d+)p_(\d+)us_(\d+)Hz(?:_(\d+)k)?_", path.name)
+    pct, pw_us, f_hz = (int(g) for g in m.groups()[:3])
+    rk = int(m.group(4) or 1)
+    r_load = rk * 1000.0
     fs, i, v = load(path)
     i_f, v_f = despike(i, fs), despike(v, fs)
     on = pulse_onsets(v, fs)
-    raw = metrics(i, v, on, fs, pw_us)
-    flt = metrics(i_f, v_f, on, fs, pw_us)
-    text = report(path.name, pct, pw_us, f_hz, raw, flt)
+    raw = metrics(i, v, on, fs, pw_us, r_load)
+    flt = metrics(i_f, v_f, on, fs, pw_us, r_load)
+    text = report(path.name, pct, pw_us, f_hz, rk, raw, flt)
     print(text, "\n")
 
     t = np.arange(len(i)) / fs
@@ -128,7 +131,7 @@ def qc(path):
 
     dec = max(1, len(i) // 20000)
     for col, (x, xf, c, lab) in enumerate(((i * 1e6, i_f * 1e6, "C0", "Current (µA)"),
-                                           (v * 1e3, v_f * 1e3, "C1", "V / 1 kΩ (µA)"))):
+                                           (v / r_load * 1e6, v_f / r_load * 1e6, "C1", f"V / {rk} kΩ (µA)"))):
         a0 = ax[0, col]
         a0.plot(t[::dec], x[::dec], lw=0.4, color="0.7", label="raw")
         a0.plot(t[::dec], xf[::dec], lw=0.5, color=c, label="filtered")
@@ -143,7 +146,7 @@ def qc(path):
 
         a2 = ax[2, col]
         key = "med_i" if col == 0 else "med_v"
-        scale = 1e6 if col == 0 else 1e3
+        scale = 1e6 if col == 0 else 1e6 / r_load
         a2.plot(raw["ts"], raw[key] * scale, lw=0.8, color="0.6", label="raw median")
         a2.plot(flt["ts"], flt[key] * scale, lw=1.2, color=c, label="filtered median")
         a2.axvspan(0, pw_us, color="g", alpha=0.08, label="set phase 1")

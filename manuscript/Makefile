@@ -2,7 +2,7 @@
 #   make          PDF and DOCX into build/
 #   make pdf      PDF only (tectonic; BibTeX with elsarticle-harv)
 #   make docx     DOCX only (pandoc, styled by templates/reference.docx, citations by citeproc)
-#   make notes    working notes as a separate PDF (notes.tex)
+#   make notes    working notes as a separate PDF and DOCX (notes.tex)
 #   make figures  regenerate the impedance plot and the bench plot (Figure 1 is a static image)
 #   make watch    rebuild the PDF whenever a source file changes
 #   make clean    remove build/
@@ -19,12 +19,22 @@ all: pdf docx notes
 
 pdf: $(BUILD)/$(NAME).pdf
 docx: $(BUILD)/$(NAME).docx
-notes: $(BUILD)/$(NAME)_notes.pdf
+notes: $(BUILD)/$(NAME)_notes.pdf $(BUILD)/$(NAME)_notes.docx
 
 $(BUILD)/$(NAME)_notes.pdf: notes.tex sections/working_notes.tex sections/references.tex creed.sty refs.bib
 	@mkdir -p $(BUILD)
 	tectonic --outdir $(BUILD) notes.tex
 	@mv $(BUILD)/notes.pdf $@
+	@echo "Wrote $@"
+
+$(BUILD)/$(NAME)_notes.docx: notes.tex sections/working_notes.tex sections/references.tex refs.bib templates/reference.docx $(CSL)
+	@mkdir -p $(BUILD)
+	pandoc notes.tex --from latex-latex_macros --to docx \
+		--reference-doc templates/reference.docx \
+		--shift-heading-level-by 1 \
+		--citeproc --bibliography refs.bib --csl $(CSL) \
+		--resource-path . \
+		--output $@
 	@echo "Wrote $@"
 
 $(BUILD)/$(NAME).pdf: $(SOURCES)

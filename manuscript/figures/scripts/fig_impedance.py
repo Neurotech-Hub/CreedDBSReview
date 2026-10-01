@@ -31,7 +31,7 @@ OUTPUT_COLUMNS = {0: "D", 1: "I"}  # resistance (kOhm) column for each output
 EXCLUDE = {("Mouse 1", 0)}  # reads ~0 V at every session (short to return)
 EXCLUDE_MICE = {"Mouse 3"}
 
-SWING_V = 4.9  # approximate output swing of the Howland stage on +/-5 V rails
+SWING_V = 4.60  # stimulating-phase swing measured into 47 kOhm: 92.6 uA x (47 kOhm + SERIES_OHM)
 SERIES_OHM = 2000 + 660  # sense resistor plus output filter resistance
 REFERENCE_UA = 100  # reference protocol amplitude
 
@@ -124,7 +124,8 @@ def main():
     means = [statistics.mean(by_week[w]) for w in weeks]
     sds = [statistics.stdev(by_week[w]) for w in weeks]
     ax_a.errorbar(weeks, means, yerr=sds, color="black", marker="o", markersize=4,
-                  linewidth=1, capsize=3)
+                  linewidth=1, capsize=3, label=f"Mean ± SD ({len(data)} electrodes)")
+    ax_a.legend(fontsize=7, frameon=False, loc="upper right")
     ax_a.set_xlabel("Weeks after implantation")
     ax_a.set_ylabel("Impedance (kΩ)")
     ax_a.set_xticks(weeks)
@@ -134,17 +135,21 @@ def main():
     z_max = 100
     z_grid = [i / 4 for i in range(4, 4 * z_max + 1)]
     ax_b.plot(z_grid, [i_max_ua(z, SWING_V, SERIES_OHM) for z in z_grid],
-              color="black", linewidth=1.2)
+              color="black", linewidth=1.2, label="Compliance limit")
     z_lo, z_hi = min(means), max(means)
     i_hi, i_lo = (i_max_ua(z, SWING_V, SERIES_OHM) for z in (z_lo, z_hi))
-    ax_b.axvspan(z_lo, z_hi, color="0.85", zorder=0)
+    ax_b.axvspan(z_lo, z_hi, color="0.85", zorder=0, label="Weekly mean range")
     band = [z for z in z_grid if z_lo <= z <= z_hi]
     ax_b.plot(band, [i_max_ua(z, SWING_V, SERIES_OHM) for z in band],
               color="black", linewidth=3)
-    for z, i in ((z_lo, i_hi), (z_hi, i_lo)):
-        ax_b.plot([0, z], [i, i], color="0.4", linewidth=0.8, linestyle="--")
+    for k, (z, i) in enumerate(((z_lo, i_hi), (z_hi, i_lo))):
+        ax_b.plot([0, z], [i, i], color="0.4", linewidth=0.8, linestyle="--",
+                  label="Projected range" if k == 0 else None)
     ax_b.text(z_hi + 2, i_hi + 12, f"{i_lo:.0f}–{i_hi:.0f} µA", ha="left", va="bottom")
-    ax_b.axhline(REFERENCE_UA, color="gray", linewidth=0.8, linestyle=":")
+    ax_b.axhline(REFERENCE_UA, color="gray", linewidth=0.8, linestyle=":",
+                 label="Reference protocol")
+    ax_b.legend(fontsize=6.5, frameon=False, loc="upper right", borderaxespad=0,
+                handlelength=1.5)
     ax_b.text(z_max - 1, REFERENCE_UA - 8, "100 µA", ha="right", va="top", color="gray")
     ax_b.set_ylabel("Maximum regulated\ncurrent (µA)")
     ax_b.set_ylim(0, 300)
@@ -156,7 +161,10 @@ def main():
     for k, (w, m, sd) in enumerate(zip(weeks, means, sds)):
         c = cmap(k / max(len(weeks) - 1, 1))
         ax_s.errorbar(m, w, xerr=sd, color=c, marker="o", markersize=3.5,
-                      linewidth=1, capsize=2)
+                      linewidth=1, capsize=2,
+                      label="Weekly mean ± SD" if k == len(weeks) // 2 else None)
+    ax_s.legend(fontsize=6.5, frameon=False, loc="lower right", borderaxespad=0,
+                handlelength=1.5)
     ax_s.set_ylim(min(weeks) - 0.7, max(weeks) + 0.7)
     ax_s.set_yticks([min(weeks), max(weeks)])
     ax_s.set_ylabel("Week")

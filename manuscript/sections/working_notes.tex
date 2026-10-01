@@ -1,45 +1,34 @@
 \section{Working notes}\label{working-notes}
 
-Open items for the authors. Built separately from the manuscript (\texttt{make notes}); not part of the posted paper.
-
 \subsection{Data still needed}\label{notes-data}
 
 \begin{itemize}
 \item \textbf{Electrode construction (Section 3.1).} Materials, wire diameter, insulation, exposed length or tip geometry, bilateral spacing, return electrode, connector and fabrication steps. Planned figure: electrode photograph and schematic.
-\item \textbf{Surgery and animals.} Strain, sex, age, housing, stereotaxic target and coordinates, anesthesia, IACUC protocol number, and the implantation date that anchors ``weeks after implantation'' in Section 3.
-\item \textbf{Battery measurements (Section 4.2, Table 3).} Measurement conditions are now stated (Joulescope JS220; 1 kΩ load and 180 µs pulse width for the stimulating rows). Replace the runtime projections with a measured discharge to cutoff.
-\item \textbf{In-vivo validation (Sections 6.1--6.3).} Setup, wireless-versus-tethered comparison and behavioral outcome. Planned Figure 6 legend: \emph{(A)} head-mounted device on the animal and arena; \emph{(B)} example tracking; \emph{(C)} behavioral metric for baseline, tethered DBS and FLEX-DBS wireless DBS, per animal and group.
+\item \textbf{Surgery, animals and ethics.} Ethics statement, strain, sex, age, housing, stereotaxic target and coordinates, anesthesia and analgesia, electrode exposed surface area, IACUC protocol number, and the implantation date that anchors ``weeks after implantation'' in Section 3.
+\item \textbf{In-vivo validation (Sections 6.1--6.3).}
 \item \textbf{Abstract and Conclusions.} Update the Results and Conclusions once in-vivo data exist; both currently describe design, 1 kΩ bench, impedance and battery results only.
 \end{itemize}
-
-\subsection{Bench QC, 1 kΩ load (2026-10-01)}\label{notes-bench-qc}
-
-Three Joulescope JS220 recordings (500 kHz, $\sim$11 s each) at 10, 50 and 100\,\% amplitude, 180 µs, 130 Hz set, 1 kΩ on both outputs, one output recorded (\texttt{data/bench/}, analyzed with \texttt{data/bench/bench\_qc.py}). Results are in Section 4.1 and Figure 5 (\texttt{figures/scripts/fig\_bench.py}). Firmware is not being changed now. Further bench work is deferred beyond the preprint (\texttt{future\_revisions.md}).
 
 \subsection{Impedance measurement}\label{notes-impedance}
 
 \begin{itemize}
 \item Data come from the platinum cohort 1 (M1, M2) and platinum cohort 2 (F1, F2) sheets. Excluded: M1 output 0 (near 0 V throughout, likely a short) and both electrodes of F1 (unstable; 47--118 kΩ and 23--106 kΩ between sessions, with within-session drift at 7 weeks). Analyzed: five electrodes from M1, M2 and F2. Confirm the wording of the exclusion criteria, and consider stating a quantitative criterion.
-\item The cohort 2 week-4 session was recorded at 4 weeks + 1 day and is plotted and analyzed as week 4.\item The StimJim bench check (2/10/20/68 kΩ) showed its voltage read-back 6--73 \% below the oscilloscope, so the in-vivo values may be underestimates. Consider remeasuring with an impedance meter (for example, a NanoZ at 1 kHz) or with an oscilloscope on the StimJim output, and report both.
+\item The StimJim bench check (2/10/20/68 kΩ) showed its voltage read-back 6--73 \% below the oscilloscope, which biases the in-vivo values low, while the 450 µs pulse biases them high. Consider remeasuring with an impedance meter (for example, a NanoZ at 1 kHz) or with an oscilloscope on the StimJim output, and report both.
 \item The 450 µs measurement pulse is longer than the DBS pulses; a measurement at the stimulation pulse width would better match the compliance calculation.
 \item The two-electrode configuration is justified with \citet{koo2018}; confirm that this is the framing the authors want.
-\item The other workbook sheets (gold-plated platinum, in vivo two months post, in vivo, bench testing) are not used.
 \end{itemize}
 
 \subsection{Citations to add or verify}\label{notes-citations}
 
 \begin{itemize}
-\item Resolved 2026-10-01. Tether claims now cite \citet{jiang2017} (movement and environment restriction) and \citet{aulehner2022} (small measurable stress and sleep effects in rats), and the stress wording was softened to match. Slow-developing effects cite \citet{kupsch2006} (delayed, progressive improvement with pallidal DBS for dystonia) and \citet{aleksandrova2013} (premature responding took several sessions to emerge). The subthalamic-parameter sentence now cites \citet{vachez2020} instead of \citet{creed2018}. \citet{creed2012egr} and \citet{creed2013} both used 100 µA, 90 µs, 130 Hz (Creed thesis, 2012, general methods); \citet{aleksandrova2013} used 12.5 µA, so the ``several-hundred-microampere'' claim in Section 2.3 was removed. \citet{tucker2013} added for Howland output impedance and load dependence.
 \item \citet{paulat2026} is still a Research Square preprint (posted 2026-04-27; checked 2026-10-01). Update if it is published.
 \end{itemize}
 
 \subsection{Table 4}\label{notes-table4}
 
 \begin{itemize}
-\item Resolved 2026-10-01: \citet{dehaas2012} row filled from the full paper (Table 1 and Sections 2.1.6--2.1.8). Its output is a fixed-supply voltage source with a microcontroller-adjusted series resistance, entered as CC because the paper verifies current within 10 \% into 15--45 kΩ. Kouzani parameters confirmed as 200 µA, 90 µs, 130 Hz. Burton uses the 25 kHz maximum, and the t-IPG uses the 5.3 mm thickness from the text of \citet{paulat2026}. Sizes were added to the mass column from each source; \citet{alpaugh2019}, \citet{kouzani2013} (head-mount) and \citet{burton2021} give no overall dimensions, so none is shown. \citet{shen2026} does not state a channel count and was used unilaterally. The Pinnell Figshare release is described as design files and assembly instructions; whether it contains firmware source was not checked.
-\item Still open: supplementary files were not read for \citet{burton2021} or \citet{shen2026}, and \citet{paulat2026}'s programmable ranges and battery models come from its supplement.
-\item Inconsistencies within sources, shown in Table 4 with the alternate value in parentheses: \citet{fleischer2020} amplitude and frequency (text versus table) and board size (9 × 9 mm table versus 10 × 10 mm abstract); \citet{pinnell2018} mass (2.8 g table versus 2.7 g text). Not shown: \citet{shen2026} gives $\ge$300 h in its table but more than 30 days in its discussion (table value used), and demonstrates settings outside its stated ranges.
-\item \citet{kouzani2013} was designed for mice but tested in rats; \citet{alpaugh2019}'s ``wireless'' means untethered, with no radio; its pulse width is read from its Figure 1d.
+\item Check whether the \citet{pinnell2018} Figshare release (described as design files and assembly instructions) contains firmware source.
+\item Supplementary files were not read for \citet{burton2021} or \citet{shen2026}, and \citet{paulat2026}'s programmable ranges and battery models come from its supplement.
 \end{itemize}
 
 \subsection{Firmware and design}\label{notes-firmware}
@@ -54,7 +43,7 @@ Three Joulescope JS220 recordings (500 kHz, $\sim$11 s each) at 10, 50 and 100\,
 
 \begin{itemize}
 \item Confirm author order, middle initials and affiliations.
-\item Author contributions, competing interests, funding and acknowledgments are pending.
+\item Funding statement is pending.
 \item Data availability: decide whether to deposit the impedance data and figure scripts in a public repository instead of ``available on request''.
 \item Before journal submission (not needed for bioRxiv): Highlights, graphical abstract, CRediT statement, generative-AI declaration, line numbers and double spacing per the Journal of Neuroscience Methods guide.
 \end{itemize}

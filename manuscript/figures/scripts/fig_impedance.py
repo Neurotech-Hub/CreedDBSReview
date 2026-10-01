@@ -1,7 +1,9 @@
 """Figure 4: in-vivo electrode impedance and the compliance envelope.
 
-Reads the "platinum cohort 1" sheet of data/impedance/mousehatImpedance.xlsx
-(output 1 per mouse, per-week mean rows) and writes figures/fig4_impedance.png.
+Reads the "platinum cohort 1" (M1, M2 = mice 1, 2) and "platinum cohort 2"
+(F1, F2 = mice 3, 4) sheets of data/impedance/mousehatImpedance.xlsx, using the
+per-week mean rows for both outputs of each mouse except mouse 1 output 0, and
+writes figures/fig4_impedance.png.
 
 Usage (from manuscript/):  .venv/bin/python figures/scripts/fig_impedance.py
 """
@@ -19,12 +21,25 @@ import matplotlib.pyplot as plt  # noqa: E402
 HERE = Path(__file__).resolve().parent
 XLSX = HERE.parents[2] / "data" / "impedance" / "mousehatImpedance.xlsx"
 OUT = HERE.parent / "fig4_impedance.png"
-SHEET = "platinum cohort 1"
+
+SHEETS = {
+    "platinum cohort 1": {"M1": "Mouse 1", "M2": "Mouse 2"},
+    "platinum cohort 2": {"F1": "Mouse 3", "F2": "Mouse 4"},
+}
+OUTPUT_COLUMNS = {0: "D", 1: "I"}  # resistance (kOhm) column for each output
+EXCLUDE = {("Mouse 1", 0)}  # reads ~0 V at every session (short to return)
 
 SWING_V = 4.9  # approximate output swing of the Howland stage on +/-5 V rails
 SERIES_OHM = 2000 + 660  # sense resistor plus output filter resistance
 BATTERY_V = 3.0  # illustrative battery-direct compliance
 REFERENCE_UA = 100  # reference protocol amplitude
+
+COLORS = {
+    "Mouse 1": "#1f77b4",
+    "Mouse 2": "#d62728",
+    "Mouse 3": "#2ca02c",
+    "Mouse 4": "#9467bd",
+}
 
 NS = {
     "m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",
@@ -58,8 +73,8 @@ def read_sheet(path, name):
     raise KeyError(f"sheet {name!r} not found in {path}")
 
 
-def output1_means(cells):
-    """Per-week output-1 mean impedance (kOhm) for each mouse, in sheet order."""
+def weekly_means(cells, labels):
+    """{(mouse, output): [(week, kOhm), ...]} from the per-week mean rows."""
     rows = sorted({int(re.sub(r"\D", "", ref)) for ref in cells})
     data = {}
     week = None
@@ -69,10 +84,15 @@ def output1_means(cells):
         match = re.match(r"(\d+) weeks? post implant", a)
         if match:
             week = int(match.group(1))
-        elif re.fullmatch(r"M\d+", a):
-            mouse = a
+        elif a in labels:
+            mouse = labels[a]
         elif a == "mean" and week is not None and mouse is not None:
-            data.setdefault(mouse, []).append((week, float(cells[f"I{row}"])))
+            for output, col in OUTPUT_COLUMNS.items():
+                if (mouse, output) in EXCLUDE:
+                    continue
+                data.setdefault((mouse, output), []).append(
+                    (week, float(cells[f"{col}{row}"]))
+                )
     return data
 
 
@@ -81,24 +101,45 @@ def i_max_ua(z_kohm, volts, series_ohm):
 
 
 def main():
-    data = output1_means(read_sheet(XLSX, SHEET))
-    labels = {"M1": "Mouse 1", "M2": "Mouse 2"}
-    colors = {"M1": "#1f77b4", "M2": "#d62728"}
+    data = {}
+    for sheet, labels in SHEETS.items():
+        data.update(weekly_means(read_sheet(XLSX, sheet), labels))
 
     plt.rcParams.update({"font.size": 9, "font.family": "sans-serif"})
-    fig, (ax_a, ax_b) = plt.subplots(1, 2, figsize=(7.0, 3.0), constrained_layout=True)
+    fig, (ax_a, ax_b) = plt.subplots(1, 2, figsize=(7.0, 3.2), constrained_layout=True)
 
-    for mouse, points in data.items():
+    for (mouse, output), points in sorted(data.items()):
         weeks, z = zip(*points)
-        ax_a.plot(weeks, z, "o-", color=colors[mouse], label=labels[mouse])
+        ax_a.plot(
+            weeks,
+            z,
+            marker="o" if output == 1 else "s",
+            linestyle="-" if output == 1 else "--",
+            markerfacecolor=COLORS[mouse] if output == 1 else "white",
+            color=COLORS[mouse],
+            markersize=4,
+            linewidth=1,
+        )
+    max_week = max(w for points in data.values() for w, _ in points)
     ax_a.set_xlabel("Weeks after implantation")
     ax_a.set_ylabel("Impedance (kΩ)")
-    ax_a.set_xticks(range(1, 6))
-    ax_a.set_ylim(0, 90)
-    ax_a.legend(frameon=False, loc="lower right")
+    ax_a.set_xticks(range(1, max_week + 1))
+    mouse_handles = [
+        plt.Line2D([], [], color=c, marker="o", linewidth=1, markersize=4, label=m)
+        for m, c in COLORS.items()
+    ]
+    output_handles = [
+        plt.Line2D([], [], color="black", marker="o", linestyle="-", linewidth=1,
+                   markersize=4, label="Output 1"),
+        plt.Line2D([], [], color="black", marker="s", linestyle="--", linewidth=1,
+                   markersize=4, markerfacecolor="white", label="Output 0"),
+    ]
+    ax_a.legend(handles=mouse_handles + output_handles, frameon=False,
+                loc="upper center", ncol=3, fontsize=7)
+    ax_a.set_ylim(0, 150)
     ax_a.set_title("A", loc="left", fontweight="bold")
 
-    z_grid = [i / 2 for i in range(2, 241)]
+    z_grid = [i / 2 for i in range(2, 281)]
     ax_b.plot(
         z_grid,
         [i_max_ua(z, SWING_V, SERIES_OHM) for z in z_grid],
@@ -113,19 +154,20 @@ def main():
         label="Battery-direct (~3 V)",
     )
     ax_b.axhline(REFERENCE_UA, color="gray", linewidth=0.8, linestyle=":")
-    ax_b.text(118, REFERENCE_UA + 8, "100 µA", ha="right", va="bottom", color="gray")
-    for mouse, points in data.items():
+    ax_b.text(138, REFERENCE_UA + 8, "100 µA", ha="right", va="bottom", color="gray")
+    for (mouse, output), points in sorted(data.items()):
         z = [p[1] for p in points]
         ax_b.plot(
             z,
             [i_max_ua(v, SWING_V, SERIES_OHM) for v in z],
-            "o",
-            color=colors[mouse],
-            label=labels[mouse],
+            "o" if output == 1 else "s",
+            color=COLORS[mouse],
+            markerfacecolor=COLORS[mouse] if output == 1 else "white",
+            markersize=4,
         )
     ax_b.set_xlabel("Load impedance (kΩ)")
     ax_b.set_ylabel("Maximum regulated current (µA)")
-    ax_b.set_xlim(0, 120)
+    ax_b.set_xlim(0, 140)
     ax_b.set_ylim(0, 600)
     ax_b.legend(frameon=False, loc="upper right")
     ax_b.set_title("B", loc="left", fontweight="bold")
@@ -135,6 +177,8 @@ def main():
 
     fig.savefig(OUT, dpi=300)
     print(f"wrote {OUT}")
+    for (mouse, output), points in sorted(data.items()):
+        print(mouse, f"output {output}:", ", ".join(f"w{w} {z:.1f}" for w, z in points))
 
 
 if __name__ == "__main__":

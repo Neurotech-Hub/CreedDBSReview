@@ -9,6 +9,7 @@ Usage (from manuscript/):  .venv/bin/python figures/scripts/fig_impedance.py
 """
 
 import re
+import statistics
 import zipfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -28,10 +29,10 @@ SHEETS = {
 }
 OUTPUT_COLUMNS = {0: "D", 1: "I"}  # resistance (kOhm) column for each output
 EXCLUDE = {("Mouse 1", 0)}  # reads ~0 V at every session (short to return)
+EXCLUDE_MICE = {"Mouse 3"}
 
 SWING_V = 4.9  # approximate output swing of the Howland stage on +/-5 V rails
 SERIES_OHM = 2000 + 660  # sense resistor plus output filter resistance
-BATTERY_V = 3.0  # illustrative battery-direct compliance
 REFERENCE_UA = 100  # reference protocol amplitude
 
 COLORS = {
@@ -88,7 +89,7 @@ def weekly_means(cells, labels):
             mouse = labels[a]
         elif a == "mean" and week is not None and mouse is not None:
             for output, col in OUTPUT_COLUMNS.items():
-                if (mouse, output) in EXCLUDE:
+                if (mouse, output) in EXCLUDE or mouse in EXCLUDE_MICE:
                     continue
                 data.setdefault((mouse, output), []).append(
                     (week, float(cells[f"{col}{row}"]))
@@ -106,79 +107,71 @@ def main():
         data.update(weekly_means(read_sheet(XLSX, sheet), labels))
 
     plt.rcParams.update({"font.size": 9, "font.family": "sans-serif"})
-    fig, (ax_a, ax_b) = plt.subplots(1, 2, figsize=(7.0, 3.2), constrained_layout=True)
+    fig, axes = plt.subplot_mosaic(
+        [["A", "B"], ["A", "S"]],
+        figsize=(7.0, 3.6),
+        height_ratios=[3, 1.4],
+        constrained_layout=True,
+    )
+    ax_a, ax_b, ax_s = axes["A"], axes["B"], axes["S"]
+    ax_s.sharex(ax_b)
 
-    for (mouse, output), points in sorted(data.items()):
-        weeks, z = zip(*points)
-        ax_a.plot(
-            weeks,
-            z,
-            marker="o" if output == 1 else "s",
-            linestyle="-" if output == 1 else "--",
-            markerfacecolor=COLORS[mouse] if output == 1 else "white",
-            color=COLORS[mouse],
-            markersize=4,
-            linewidth=1,
-        )
-    max_week = max(w for points in data.values() for w, _ in points)
+    by_week = {}
+    for points in data.values():
+        for week, z in points:
+            by_week.setdefault(week, []).append(z)
+    weeks = sorted(by_week)
+    means = [statistics.mean(by_week[w]) for w in weeks]
+    sds = [statistics.stdev(by_week[w]) for w in weeks]
+    ax_a.errorbar(weeks, means, yerr=sds, color="black", marker="o", markersize=4,
+                  linewidth=1, capsize=3)
     ax_a.set_xlabel("Weeks after implantation")
     ax_a.set_ylabel("Impedance (kΩ)")
-    ax_a.set_xticks(range(1, max_week + 1))
-    mouse_handles = [
-        plt.Line2D([], [], color=c, marker="o", linewidth=1, markersize=4, label=m)
-        for m, c in COLORS.items()
-    ]
-    output_handles = [
-        plt.Line2D([], [], color="black", marker="o", linestyle="-", linewidth=1,
-                   markersize=4, label="Output 1"),
-        plt.Line2D([], [], color="black", marker="s", linestyle="--", linewidth=1,
-                   markersize=4, markerfacecolor="white", label="Output 0"),
-    ]
-    ax_a.legend(handles=mouse_handles + output_handles, frameon=False,
-                loc="upper center", ncol=3, fontsize=7)
-    ax_a.set_ylim(0, 150)
+    ax_a.set_xticks(weeks)
+    ax_a.set_ylim(0, 90)
     ax_a.set_title("A", loc="left", fontweight="bold")
 
-    z_grid = [i / 2 for i in range(2, 281)]
-    ax_b.plot(
-        z_grid,
-        [i_max_ua(z, SWING_V, SERIES_OHM) for z in z_grid],
-        color="black",
-        label="FLEX-DBS (±5 V rails)",
-    )
-    ax_b.plot(
-        z_grid,
-        [i_max_ua(z, BATTERY_V, 0) for z in z_grid],
-        color="gray",
-        linestyle="--",
-        label="Battery-direct (~3 V)",
-    )
+    z_max = 100
+    z_grid = [i / 4 for i in range(4, 4 * z_max + 1)]
+    ax_b.plot(z_grid, [i_max_ua(z, SWING_V, SERIES_OHM) for z in z_grid],
+              color="black", linewidth=1.2)
+    z_lo, z_hi = min(means), max(means)
+    i_hi, i_lo = (i_max_ua(z, SWING_V, SERIES_OHM) for z in (z_lo, z_hi))
+    ax_b.axvspan(z_lo, z_hi, color="0.85", zorder=0)
+    band = [z for z in z_grid if z_lo <= z <= z_hi]
+    ax_b.plot(band, [i_max_ua(z, SWING_V, SERIES_OHM) for z in band],
+              color="black", linewidth=3)
+    for z, i in ((z_lo, i_hi), (z_hi, i_lo)):
+        ax_b.plot([0, z], [i, i], color="0.4", linewidth=0.8, linestyle="--")
+    ax_b.text(z_hi + 2, i_hi + 12, f"{i_lo:.0f}–{i_hi:.0f} µA", ha="left", va="bottom")
     ax_b.axhline(REFERENCE_UA, color="gray", linewidth=0.8, linestyle=":")
-    ax_b.text(138, REFERENCE_UA + 8, "100 µA", ha="right", va="bottom", color="gray")
-    for (mouse, output), points in sorted(data.items()):
-        z = [p[1] for p in points]
-        ax_b.plot(
-            z,
-            [i_max_ua(v, SWING_V, SERIES_OHM) for v in z],
-            "o" if output == 1 else "s",
-            color=COLORS[mouse],
-            markerfacecolor=COLORS[mouse] if output == 1 else "white",
-            markersize=4,
-        )
-    ax_b.set_xlabel("Load impedance (kΩ)")
-    ax_b.set_ylabel("Maximum regulated current (µA)")
-    ax_b.set_xlim(0, 140)
-    ax_b.set_ylim(0, 600)
-    ax_b.legend(frameon=False, loc="upper right")
+    ax_b.text(z_max - 1, REFERENCE_UA - 8, "100 µA", ha="right", va="top", color="gray")
+    ax_b.set_ylabel("Maximum regulated\ncurrent (µA)")
+    ax_b.set_ylim(0, 300)
+    ax_b.tick_params(labelbottom=False)
     ax_b.set_title("B", loc="left", fontweight="bold")
 
-    for ax in (ax_a, ax_b):
+    cmap = plt.get_cmap("viridis")
+    ax_s.axvspan(z_lo, z_hi, color="0.85", zorder=0)
+    for k, (w, m, sd) in enumerate(zip(weeks, means, sds)):
+        c = cmap(k / max(len(weeks) - 1, 1))
+        ax_s.errorbar(m, w, xerr=sd, color=c, marker="o", markersize=3.5,
+                      linewidth=1, capsize=2)
+    ax_s.set_ylim(min(weeks) - 0.7, max(weeks) + 0.7)
+    ax_s.set_yticks([min(weeks), max(weeks)])
+    ax_s.set_ylabel("Week")
+    ax_s.set_xlabel("Load impedance (kΩ)")
+    ax_s.set_xlim(0, z_max)
+
+    for ax in (ax_a, ax_b, ax_s):
         ax.spines[["top", "right"]].set_visible(False)
 
     fig.savefig(OUT, dpi=300)
     print(f"wrote {OUT}")
     for (mouse, output), points in sorted(data.items()):
         print(mouse, f"output {output}:", ", ".join(f"w{w} {z:.1f}" for w, z in points))
+    for w, m, s in zip(weeks, means, sds):
+        print(f"week {w}: {m:.1f} ± {s:.1f} kΩ (n = {len(by_week[w])})")
 
 
 if __name__ == "__main__":

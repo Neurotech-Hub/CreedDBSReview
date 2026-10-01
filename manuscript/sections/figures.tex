@@ -19,7 +19,7 @@
 \end{minipage}
 
 \noindent\begin{minipage}{\linewidth}
-\textbf{Figure 3. MouseCap iOS application.} \emph{(Left)} Continuous mode: amplitude (percent of full scale and nominal current into 1 kΩ), pulse duration and frequency sliders; device ID, firmware version and battery indicator; activation toggle, Sync, LED and Read controls. \emph{(Right)} Burst mode: burst period, intra-burst frequency and burst duration with unit selection. Representative settings are shown (50 \%, 90 µs, 130 Hz; 30 s burst period, 10 s burst duration). With firmware v0.5, the 90 µs and 130 Hz settings deliver a $\sim$117 µs stimulating phase at 142.9 Hz (Table 2).
+\textbf{Figure 3. MouseCap iOS application.} \emph{(Left)} Continuous mode: amplitude (percent of full scale and nominal current into 1 kΩ), pulse duration and frequency sliders; device ID, firmware version and battery indicator; activation toggle, Sync, LED and Read controls. \emph{(Right)} Burst mode: burst period, intra-burst frequency and burst duration with unit selection. Representative settings are shown (50 \%, 90 µs, 130 Hz; 30 s burst period, 10 s burst duration). Displayed values are settings; delivered values are given in Table 2.
 
 \begin{center}
 \includegraphics[width=5.5in]{figures/FLEX-DBS_iPhoneRenders.png}
@@ -31,5 +31,13 @@
 
 \begin{center}
 \includegraphics[width=\linewidth]{figures/fig4_impedance.png}
+\end{center}
+\end{minipage}
+
+\noindent\begin{minipage}{\linewidth}
+\textbf{Figure 5. Bench output into a 1 kΩ load.} One output of a FLEX-DBS device (firmware v0.5) was loaded with 1 kΩ and recorded at 500 kHz for $\sim$11 s at each of three amplitude settings (10, 50 and 100 \%; 180 µs, 130 Hz). Current is the voltage across the load divided by 1 kΩ, after a 38 µs median filter that removes range-switching artifacts of the meter (Section 4.1). \emph{(A)} Median pulse at each setting (1545--1602 pulses); the 5th--95th percentile band lies within the line width. Shading marks the set stimulating (180 µs) and recovery (900 µs) phases. \emph{(B)} Mean plateau current of the stimulating (phase 1) and recovery (phase 2) phases against the amplitude setting, with the nominal currents shown in the application (6 µA per percent; recovery, one fifth), the ideal DAC transconductance (6.25 µA per percent) and least-squares lines through the three settings. \emph{(C)} Charge in each phase of the median pulse and the mean net charge over a full period. At every setting the delivered frequency was 142.5 Hz, the stimulating phase lasted 238--254 µs and the recovery phase 854--878 µs.
+
+\begin{center}
+\includegraphics[width=\linewidth]{figures/fig5_bench.png}
 \end{center}
 \end{minipage}

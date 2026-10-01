@@ -2,7 +2,7 @@
 #   make          PDF and DOCX into build/
 #   make pdf      PDF only (tectonic; BibTeX with elsarticle-harv)
 #   make docx     DOCX only (pandoc, styled by templates/reference.docx, citations by citeproc)
-#   make figures  regenerate the Mermaid diagram and the impedance plot
+#   make figures  regenerate the Mermaid diagram, the impedance plot and the bench plot
 #   make watch    rebuild the PDF whenever a source file changes
 #   make clean    remove build/
 
@@ -35,7 +35,7 @@ $(BUILD)/$(NAME).docx: $(SOURCES) templates/reference.docx $(CSL)
 		--output $@
 	@echo "Wrote $@"
 
-figures: figures/fig1_architecture.png figures/fig4_impedance.png
+figures: figures/fig1_architecture.png figures/fig4_impedance.png figures/fig5_bench.png
 
 figures/fig1_architecture.png: figures/fig1_architecture.mmd
 	npx -y @mermaid-js/mermaid-cli@11 -i $< -o $@ -s 3 -b white
@@ -43,9 +43,12 @@ figures/fig1_architecture.png: figures/fig1_architecture.mmd
 figures/fig4_impedance.png: figures/scripts/fig_impedance.py ../data/impedance/mousehatImpedance.xlsx | $(VENV)
 	$(VENV)/bin/python $<
 
+figures/fig5_bench.png: figures/scripts/fig_bench.py $(wildcard ../data/bench/*.jls) | $(VENV)
+	$(VENV)/bin/python $<
+
 $(VENV):
 	python3 -m venv $(VENV)
-	$(VENV)/bin/pip install --quiet matplotlib
+	$(VENV)/bin/pip install --quiet matplotlib numpy scipy pyjls
 
 watch:
 	@command -v fswatch >/dev/null || { echo "watch needs fswatch: brew install fswatch"; exit 1; }

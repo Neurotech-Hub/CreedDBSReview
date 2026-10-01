@@ -5,14 +5,26 @@ Open items for the authors. Remove this section before posting.
 \subsection{Data still needed}\label{notes-data}
 
 \begin{itemize}
-\item \textbf{Device mass.} Table 4 leaves the FLEX-DBS mass blank. R. Graham (comment, 2026-09-18): ``If i remember right, we were around 4.4 grams the last time i weighed a device w/ batteries.'' Weigh the device with cells, with and without the shroud and with the programming tab removed, and add the value to Section 2.2 and Table 4.
+\item \textbf{Device mass.} Added to Section 2.2 and Table 4 (2.17 g device with connector and tab, 0.48 g shroud, 0.81 g per cell; 4.27 g total). Optional: weigh with the programming tab removed, since that is how the device is worn.
 \item \textbf{Electrode construction (Section 3.1).} Materials, wire diameter, insulation, exposed length or tip geometry, bilateral spacing, return electrode, connector and fabrication steps. Planned figure: electrode photograph and schematic.
 \item \textbf{Surgery and animals.} Strain, sex, age, housing, stereotaxic target and coordinates, anesthesia, IACUC protocol number, and the implantation date that anchors ``weeks after implantation'' in Section 3.
-\item \textbf{Bench electrical characterization (Sections 4.1, 4.2).} Commanded versus measured current into 1 kΩ (resolves the 6.25 µA/\% ideal transconductance versus the application's 6 µA/\% label); programmed versus measured stimulating- and recovery-phase widths (confirms the $\sim$117 µs floor and the 1:5 recovery ratio); delivered current versus load at 100 and 400 µA to measure the compliance limit (confirms the $\sim$4.9 V swing used in Section 3.3 and Figure 4B) and the Howland load dependence bounded analytically in Section 7; a representative pulse at the reference protocol; op-amp on-time per pulse (210 µs + 6·\emph{P}, currently from firmware constants). Planned Figure 5 legend: \emph{(A)} commanded versus measured current into 1 kΩ; \emph{(B)} programmed versus measured stimulating- and recovery-phase widths; \emph{(C)} representative pulse at the reference protocol showing the asymmetric recovery phase; \emph{(D)} delivered current versus load at 100 and 400 µA with the compliance limit marked.
+\item \textbf{Bench electrical characterization (Sections 4.1, 4.2).} Figure 5 and Section 4.1 now report three amplitude settings at 180 µs, 130 Hz into 1 kΩ; open items are listed under Bench QC below. Still needed for Section 4.2: delivered current versus load at 100 and 400 µA to measure the compliance limit (confirms the $\sim$4.9 V swing used in Section 3.3 and Figure 4B) and the Howland load dependence bounded analytically in Section 7, as a new Figure 5 panel with the compliance limit marked; a representative pulse at the reference protocol (90 µs); op-amp on-time per pulse (210 µs + 6·\emph{P}, currently from firmware constants).
 \item \textbf{Battery measurements (Section 4.3, Table 3).} Record the conditions of the current measurements (pulse width, load, LED state, instrument) from the bench notes, and replace the runtime projections with a measured discharge to cutoff.
 \item \textbf{In-vivo validation (Sections 6.1--6.3).} Setup, wireless-versus-tethered comparison and behavioral outcome. Planned Figure 6 legend: \emph{(A)} head-mounted device on the animal and arena; \emph{(B)} example tracking; \emph{(C)} behavioral metric for baseline, tethered DBS and FLEX-DBS wireless DBS, per animal and group.
-\item \textbf{Abstract and Conclusions.} Update the Results and Conclusions once bench and in-vivo data exist; both currently describe design, impedance and battery results only.
+\item \textbf{Abstract and Conclusions.} Update the Results and Conclusions once the load sweep and in-vivo data exist; both currently describe design, 1 kΩ bench, impedance and battery results only.
 \item \textbf{Timing diagram.} The per-pulse sequence in Section 2.2 (amplifier enable and 150 µs settle; switches close and 30 µs settle; DAC step to \emph{I} for \emph{P}; step to −\emph{I}/5 for 5·\emph{P}; return to reference; switches open; amplifier shutdown) could become a Figure 1 inset or a panel of Figure 5, preferably from a scope capture.
+\end{itemize}
+
+\subsection{Bench QC, 1 kΩ load (2026-10-01)}\label{notes-bench-qc}
+
+Three Joulescope JS220 recordings (500 kHz, $\sim$11 s each) at 10, 50 and 100\,\% amplitude, 180 µs, 130 Hz set, 1 kΩ on both outputs, one output recorded (\texttt{data/bench/}, analyzed with \texttt{data/bench/bench\_qc.py}). Results are in Section 4.1 and Figure 5 (\texttt{figures/scripts/fig\_bench.py}). Firmware is not being changed now. Open items:
+
+\begin{itemize}
+\item \textbf{More amplitude points.} Measure 0\,\% and several intermediate settings. The three points give 4.7 µA/\% with a +47 µA intercept but deviate from that line by up to $\sim$20 µA, and phase 2 does not shift by the same offset, so the cause (Howland mismatch, DAC code mapping or something else) is not yet identified.
+\item \textbf{Other pulse widths.} Measure several settings, including 90 µs, to separate a fixed timing offset from a proportional error and to find what the 90 µs reference setting actually delivers.
+\item \textbf{Interpulse transient.} A brief transient about 2 ms after each pulse ends (largest on the current channel, $\sim$$-$8 mV on the voltage channel) matches the ``artifact at SHDN+2 ms'' described in the firmware comments (LT6020 shutdown coupling through the open switch). The median filter suppresses it, so its absence in filtered plots should not be read as absence in the device; raw traces are shown in grey in the QC figures.
+\item \textbf{Phase 1 step.} At 10\,\% the phase 1 plateau steps up by $\sim$10 µA partway through (visible in Figure 5A). Not investigated.
+\item \textbf{Load sweep.} Delivered current versus load for Section 4.2 (see Bench electrical characterization above).
 \end{itemize}
 
 \subsection{Impedance measurement}\label{notes-impedance}
@@ -42,13 +54,13 @@ Open items for the authors. Remove this section before posting.
 \item Supplementary files were not read for \citet{burton2021} or \citet{shen2026}, and \citet{paulat2026}'s programmable ranges and battery models come from its supplement. The Pinnell firmware release was not checked in the Figshare repository.
 \item Inconsistencies within sources: \citet{fleischer2020} gives amplitude and frequency ranges that differ between text and table (both shown), and a 9 × 9 mm versus 10 × 10 mm board; \citet{pinnell2018} gives 2.8 g in its table and 2.7 g in its introduction; \citet{shen2026} gives $\ge$300 h in its table but more than 30 days in its discussion, and demonstrates settings outside its stated ranges; \citet{burton2021} gives a 50 kHz and a 25 kHz maximum frequency; the t-IPG thickness is 5.3 mm in the text of \citet{paulat2026} and 2.6 mm in its supplementary table.
 \item \citet{kouzani2013} was designed for mice but tested in rats; \citet{alpaugh2019}'s ``wireless'' means untethered, with no radio; its pulse width is read from its Figure 1d.
-\item Consider adding dimensions as a column once the FLEX-DBS mass is known.
+\item Consider adding dimensions as a column now that the FLEX-DBS mass is known.
 \end{itemize}
 
 \subsection{Firmware and design}\label{notes-firmware}
 
 \begin{itemize}
-\item Firmware v0.5 delivers 130 Hz as 142.9 Hz and settings of 117 µs or less as $\sim$117 µs (Table 2). If the fixes listed in Section 7 are made before posting, update Table 2, Figure 3's legend and the Limitations.
+\item Firmware v0.5 delivers the 130 Hz setting as 142.5 Hz, and at 180 µs the stimulating phase measures $\sim$60 µs long and the recovery phase 22--46 µs short, leaving a 26--35 \% net charge per pulse (Section 4.1). If the fixes listed in Section 7 are made before posting, remeasure and update Section 4.1, Figure 5, Table 2 and the Limitations.
 \item The photograph in Figure 2A shows the ``v8.1'' board silkscreen; decide whether to mention the hardware revision in the text.
 \item Supplementary S1: consider adding the BOM (\texttt{v8.1/BOM.csv}) alongside the schematic.
 \end{itemize}

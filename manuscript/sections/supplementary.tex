@@ -1,7 +1,7 @@
 \section{Supplementary material}\label{supplementary-material}
 
 \begin{itemize}
-\item \textbf{S1.} Circuit schematic of the FLEX-DBS board (PDF).
+\item \textbf{S1.} Circuit schematic of the FLEX-DBS board (PDF); available from the corresponding author on request.
 \item \textbf{S2.} Firmware for the BGM220S (Silicon Labs Simplicity Studio project), v0.5. Repository: \url{https://github.com/Neurotech-Hub/Creed-DBS-SiLabs}
 \item \textbf{S3.} MouseCap iOS application source. Repository: \url{https://github.com/Neurotech-Hub/MouseCap-iOS}
 \item \textbf{S4.} BLE protocol specification (\texttt{MCU\_BLE\_PROTOCOL.md} in S3): service and characteristic UUIDs, command grammar, parameter keys and ranges, and response format.
@@ -20,7 +20,7 @@
 System & Species tested & Mass with battery; size & Channels & Output & Supply / compliance & Amplitude, pulse width, frequency; waveform & Parameter control & Current draw; operating duration & Open release \\
 \midrule
 \endhead
-\textbf{FLEX-DBS (this work)} & Mouse & 3.71 g with shroud (two zinc-air cells); 19.5 × 22.5 × 8.72 mm & \textbf{2; shared amplitude and timing}$^{\dagger}$ & CC & ±5 V rails; $\sim$4.6 V swing (measured) & 0--625 µA ideal (compliance-limited in vivo); 90--600 µs set; $\sim$83--167 Hz delivered; asymmetric biphasic, 1:5 recovery; \textbf{continuous or burst}$^{\dagger}$ & \textbf{Real-time BLE from an iOS app; autonomous after disconnect}$^{\dagger}$ & 3.15--3.42 mA stimulating; $\sim$3 d per cell pair (projected) & Schematic, firmware, app, protocol (S1--S4) \\
+\textbf{FLEX-DBS (this work)} & Mouse & 3.71 g with shroud (two zinc-air cells); 19.5 × 22.5 × 8.72 mm & \textbf{2; shared amplitude and timing}$^{\dagger}$ & CC & ±5 V rails; $\sim$4.6 V swing (measured) & 0--625 µA ideal (compliance-limited in vivo); 90--600 µs set; $\sim$83--167 Hz delivered; asymmetric biphasic, 1:5 recovery; \textbf{continuous or burst}$^{\dagger}$ & \textbf{Real-time BLE from an iOS app; autonomous after disconnect}$^{\dagger}$ & 3.15--3.42 mA stimulating; $\sim$3 d per cell pair (projected) & Firmware, app, protocol (S2--S4); schematic on request (S1) \\
 t-IPG, \citet{paulat2026} & Mouse (s-IPG also in rats and mice) & 0.9 g (s-IPG 1.6 g); 5.3 mm thick & 2, time-delayed & CC & 3 V lithium cell, direct & 1--100 µA, 50--700 µs, 2--257 Hz; cathodic phase with long low-amplitude anodic phase; theta- and beta-burst modes & Predefined paradigms via near-field transponder & 21.3 µA maximum; 49 d voltage-compliant & Partial (GitHub) \\
 STELLA, \citet{plocksties2021} & Rat (proposed for mice $>$20 g) & 4.0 g encapsulated (CR1225), Ø17.0 × 9.0 mm; 2.6 g (CR1216), Ø15.5 × 7.5 mm & 2, synchronized & CC & Boost 3.1--3.7 V; 2.2--2.8 V at electrode & 42--100 µA, 1 µs--100 \% duty, 10--5000 Hz; monophasic, passive charge balance & Firmware set before implantation; Hall sensor steps through presets & 7.6--8.3 µA; $\ge$12 wk in vitro, 42 d in vivo & Yes, open license (GitHub) \\
 \citet{grotemeyer2024} & Mouse & 2 g; 18 × 16 × 5 mm with housing & 1 & CC & 3 V (two 1.5 V cells) & 10--500 µA, 60--500 µs, 10--200 Hz; monophasic, passive discharge & Cable programmer, reprogrammable after implantation; reed switch on/off & $\sim$20 µA; 52 d in vitro & Analysis code only; commercialized \\

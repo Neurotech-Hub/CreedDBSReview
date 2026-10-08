@@ -6,6 +6,12 @@ A static page that prices mouse DBS architecture choices in battery current and 
 
 The long-form source is [`docs/architecture_review.md`](docs/architecture_review.md).
 
+## Manuscript
+
+The FLEX-DBS manuscript lives in [`manuscript/`](manuscript/). Build instructions are in
+[`manuscript/README.md`](manuscript/README.md); in short, `brew install tectonic pandoc`, then
+`cd manuscript && make`. The latest built PDF and DOCX are committed in `manuscript/build/`.
+
 ## GitHub Pages
 
 No build step. The site is the `docs/` folder, published by
